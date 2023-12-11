@@ -75,5 +75,23 @@ Mind Map: Protein Sequence Analysis By G.V. Arulrajah
             - https://github.com/thekaplanlab/msabrowser/blob/master/README.md
             - https://visme.co/blog/data-visualization-types/
             
-        
+
+backend
+	MSA program
+		clustering 
+			threshold to hide low count clusters. 
+		comparison of our 89 proteins with Protein Database to discover families.  
+	Protein domain search via API
+		 
+frontend 
+	visualization of cluster MSAs
+		user can select individual Clusters to be displayed. 
+		different color choices for visual disabled 
+	show with a chart the different protein domain and structures. 
+	visualization of phylogenetic tree 
+	Show Protein 3D structure. 
+		Chimera program 
+	Layout of the website 
+		Flask (python)
+
 
