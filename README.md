@@ -70,10 +70,7 @@ Mind Map: Protein Sequence Analysis By G.V. Arulrajah
             - Phylogenetic Tree  
                 - Figtree
                 - UGENE   
-        - Insprirational Projects and references
-            - https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab009/6345340?login=false
-            - https://github.com/thekaplanlab/msabrowser/blob/master/README.md
-            - https://visme.co/blog/data-visualization-types/
+        
             
 
 backend
@@ -93,5 +90,11 @@ frontend
 		Chimera program 
 	Layout of the website 
 		Flask (python)
+
+- Insprirational Projects and references
+            - https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab009/6345340?login=false
+            - https://github.com/thekaplanlab/msabrowser/blob/master/README.md
+            - https://visme.co/blog/data-visualization-types/
+https://biopython-tutorial.readthedocs.io/en/latest/notebooks/13%20-%20Phylogenetics%20with%20Bio.Phylo.html
 
 
