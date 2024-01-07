@@ -2,6 +2,7 @@ from Bio import SeqIO
 from Bio.PDB import PDBParser
 import os
 import re
+import csv
 
 def extract_pdb_id(sequence_id):
     # Extract PDB ID from the sequence ID
@@ -80,9 +81,24 @@ def fetch_protein_info(pdb_id, amino_acid_sequence):
     except Exception as e:
         print(f"Error processing PDB ID {pdb_id}: {str(e)}")
         return 'N/A', 'N/A', 'N/A'
+    
+def export_to_csv(data, csv_filename):
+    # Export data to a CSV file
+    with open(csv_filename, 'w', newline='') as csv_file:
+        fieldnames = ['Sequence ID', 'PDB ID', 'Protein Name', 'Founded Date', 'Organism']
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+        # Write the header
+        writer.writeheader()
+
+        # Write the data rows
+        for row in data:
+            writer.writerow(row)
 
 if __name__ == "__main__":
     fasta_file = "input1.fasta"
+    output_csv_file = "output_data.csv"
+    data_to_export = []
 
     # Iterate through sequences in the FASTA file
     for record in SeqIO.parse(fasta_file, "fasta"):
@@ -95,11 +111,24 @@ if __name__ == "__main__":
         if pdb_id:
             protein_name, founded_date, organism = fetch_protein_info(pdb_id, amino_acid_sequence)
 
+            # Append the data to the list
+            data_to_export.append({
+                'Sequence ID': sequence_id,
+                'PDB ID': pdb_id,
+                'Protein Name': protein_name,
+                'Founded Date': founded_date,
+                'Organism': organism
+            })
+
             print(f"Sequence ID: {sequence_id}")
             print(f"PDB ID: {pdb_id}")
             print(f"Protein Name: {protein_name}")
-            print(f"Published Date: {founded_date}")
+            print(f"Founded Date: {founded_date}")
             print(f"Organism: {organism}")
             print("-" * 40)
         else:
             print(f"Invalid sequence ID format: {sequence_id}")
+
+    # Export the data to CSV
+    export_to_csv(data_to_export, output_csv_file)
+    print(f"Data exported to {output_csv_file}")
