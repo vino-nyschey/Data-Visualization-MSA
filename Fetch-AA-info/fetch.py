@@ -1,5 +1,6 @@
 from Bio import SeqIO
-from Bio.PDB import PDBList, PDBParser
+from Bio.PDB import PDBParser
+import os
 import re
 
 def extract_pdb_id(sequence_id):
@@ -10,26 +11,75 @@ def extract_pdb_id(sequence_id):
     else:
         return None
 
+def extract_organism(pdb_file_path):
+    # Extract organism information from the SOURCE record in the PDB file
+    organism = 'N/A'
+    with open(pdb_file_path, 'r') as pdb_file:
+        for line in pdb_file:
+            if line.startswith("SOURCE"):
+                match = re.search(r'ORGANISM_SCIENTIFIC: (.+);', line)
+                if match:
+                    organism = match.group(1)
+                    break
+    return organism
+
+def extract_protein_info_from_compnd(pdb_file_path):
+    # Extract protein name from the "MOLECULE:" line in the COMPND section
+    protein_name = 'N/A'
+    with open(pdb_file_path, 'r') as pdb_file:
+        in_molecule_section = False
+        for line in pdb_file:
+            if line.startswith("COMPND"):
+                match = re.search(r'MOLECULE: (.+);', line)
+                if match:
+                    protein_name = match.group(1)
+                    break
+            
+    return protein_name
+
+def extract_founded_date_from_header(pdb_file_path):
+    # Extract founded date from the HEADER line
+    founded_date = 'N/A'
+    with open(pdb_file_path, 'r') as pdb_file:
+        for line in pdb_file:
+            if line.startswith("HEADER"):
+                # Use regular expressions to extract information from the HEADER line
+                match = re.match(r'HEADER\s+\S+\s+(\d+-\w+-\d+)', line)
+                if match:
+                    founded_date = match.group(1)
+                    break
+    return founded_date
+
+def find_pdb_file(pdb_id):
+    # Search for PDB files recursively within the current working directory
+    for root, dirs, files in os.walk(os.getcwd()):
+        for file in files:
+            if file.lower() == f"pdb{pdb_id.lower()}.ent":
+                return os.path.join(root, file)
+    return None
+
 def fetch_protein_info(pdb_id, amino_acid_sequence):
     try:
-        # Fetch PDB file
-        pdb_list = PDBList()
-        pdb_file_path = pdb_list.retrieve_pdb_file(pdb_id, file_format="pdb")
+        # Find the full path to the PDB file
+        pdb_file_path = find_pdb_file(pdb_id)
 
-        # Parse PDB file
-        parser = PDBParser(QUIET=True)
-        structure = parser.get_structure(pdb_id, pdb_file_path)
+        if pdb_file_path:
+            # Extract protein name from the COMPND section
+            protein_name = extract_protein_info_from_compnd(pdb_file_path)
 
-        # Extract protein name and organism from the PDB header
-        header = structure.header
-        protein_name = header.get('name', 'N/A')
-        organism = header.get('organism_scientific', 'N/A')
+            # Extract founded date from the HEADER line
+            founded_date = extract_founded_date_from_header(pdb_file_path)
 
-        return protein_name, organism
+            # Extract organism information from the PDB file
+            organism = extract_organism(pdb_file_path)
+
+            return protein_name, founded_date, organism
+        else:
+            raise FileNotFoundError(f"PDB file not found for ID {pdb_id}")
 
     except Exception as e:
         print(f"Error processing PDB ID {pdb_id}: {str(e)}")
-        return 'N/A', 'N/A'
+        return 'N/A', 'N/A', 'N/A'
 
 if __name__ == "__main__":
     fasta_file = "input1.fasta"
@@ -43,11 +93,12 @@ if __name__ == "__main__":
         pdb_id = extract_pdb_id(sequence_id)
 
         if pdb_id:
-            protein_name, organism = fetch_protein_info(pdb_id, amino_acid_sequence)
+            protein_name, founded_date, organism = fetch_protein_info(pdb_id, amino_acid_sequence)
 
             print(f"Sequence ID: {sequence_id}")
             print(f"PDB ID: {pdb_id}")
             print(f"Protein Name: {protein_name}")
+            print(f"Published Date: {founded_date}")
             print(f"Organism: {organism}")
             print("-" * 40)
         else:
