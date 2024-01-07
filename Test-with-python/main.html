@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sequence Information</h1>
+    <table border="1">
+        <tr>
+            <th>Sequence Name</th>
+            <th>Sequence</th>
+            <th>Length</th>
+        </tr>
+        {% for seq_info in sequence_info %}
+        <tr>
+            <td>{{ seq_info['name'] }}</td>
+            <td>{{ seq_info['sequence'] }}</td>
+            <td>{{ seq_info['length'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
