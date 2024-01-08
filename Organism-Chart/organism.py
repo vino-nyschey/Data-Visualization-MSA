@@ -4,12 +4,16 @@ from io import BytesIO
 import base64
 import pandas as pd
 from collections import Counter
+from pathlib import Path
 
 app = Flask(__name__)
 
 def create_chart():
     # data for the pie chart
-    data =  pd.read_csv('/Users/johannaheiss/Desktop/Data-Visualization-MSA/Fetch-AA-info/output_data.csv')
+    root_folder = Path(__file__).parents[1]
+    my_path = root_folder / "Fetch-AA-info/output_data.csv"
+
+    data =  pd.read_csv(my_path)
     organisms = data['Organism']
     count_organism = Counter(organisms) # Counter({'Organism 1': 5, ...})
 
@@ -19,6 +23,11 @@ def create_chart():
     for organism, number in count_organism.items():
         labels_chart.append(f"{organism} ({number})")
         count_chart.append(number)
+
+    # create pie chart
+    fig, ax = plt.subplots()
+    ax.pie(count_chart, labels=labels_chart, autopct='%1.1f%%', startangle=90, textprops={'fontsize': 5})
+    ax.axis('equal')  # Equal aspect ratio ensures the pie chart is circular
 
     # plot is saved in BytesIO object
     img_io = BytesIO()
