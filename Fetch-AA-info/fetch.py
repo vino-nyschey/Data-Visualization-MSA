@@ -44,12 +44,21 @@ def extract_founded_date_from_header(pdb_file_path):
     with open(pdb_file_path, 'r') as pdb_file:
         for line in pdb_file:
             if line.startswith("HEADER"):
-                # Use regular expressions to extract information from the HEADER line
-                match = re.match(r'HEADER\s+\S+\s+(\d+-\w+-\d+)', line)
+                # Capture the entire line after "HEADER"
+                header_content = line.split("HEADER", 1)[1].strip()
+                
+                # Attempt to extract the date from the captured content
+                match = re.search(r'(\d+-\w+(?:-\d{2,4})?)', header_content)
+                
                 if match:
                     founded_date = match.group(1)
                     break
+
     return founded_date
+
+
+
+
 
 def find_pdb_file(pdb_id):
     # Search for PDB files recursively within the current working directory
