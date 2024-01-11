@@ -14,19 +14,30 @@ def create_chart():
     my_path = root_folder / "Fetch-AA-info/output_data.csv"
 
     data =  pd.read_csv(my_path)
-    organisms = data['Organism']
+    data_filtered = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
+    organisms = data_filtered['Organism']
     count_organism = Counter(organisms) # Counter({'Organism 1': 5, ...})
 
     labels_chart = []
     count_chart = []
+    total_count = sum(count_organism.values()) # total number of organisms
+    count_other = 0
+    organisms_other = []
+    threshold = 0.02 # threshold to group organisms with less percentage than this threshold
 
     for organism, number in count_organism.items():
-        labels_chart.append(f"{organism} ({number})")
-        count_chart.append(number)
-
+        if number > threshold * total_count: 
+            labels_chart.append(f"{organism} ({number})")
+            count_chart.append(number)
+        else: # percentage below threshold -> group together in category 'other'
+            count_other = count_other + number   
+            organisms_other.append(organism)
+    labels_chart.append(f"{'Other Organisms'} ({count_other})")
+    count_chart.append(count_other)
+    
     # create pie chart
     fig, ax = plt.subplots()
-    ax.pie(count_chart, labels=labels_chart, autopct='%1.1f%%', startangle=90, textprops={'fontsize': 5})
+    ax.pie(count_chart, labels=labels_chart, autopct='%1.1f%%', startangle=90, textprops={'fontsize': 8})
     ax.axis('equal')  # Equal aspect ratio ensures the pie chart is circular
 
     # plot is saved in BytesIO object
