@@ -5,6 +5,8 @@ import base64
 import pandas as pd
 from collections import Counter
 from pathlib import Path
+import numpy as np
+import seaborn as sns
 
 app = Flask(__name__)
 
@@ -35,10 +37,27 @@ def create_chart():
     labels_chart.append(f"{'Other Organisms'} ({count_other})")
     count_chart.append(count_other)
     
-    # create pie chart
-    fig, ax = plt.subplots()
-    ax.pie(count_chart, labels=labels_chart, autopct='%1.1f%%', startangle=90, textprops={'fontsize': 8})
-    ax.axis('equal')  # Equal aspect ratio ensures the pie chart is circular
+    # create pie chart   
+    fig, ax = plt.subplots(figsize=(12, 5), subplot_kw=dict(aspect="equal"))
+
+    wedges, percentage, text = ax.pie(count_chart, colors=sns.color_palette("Paired"), autopct='%1.2f%%', startangle=-60, textprops={'fontsize': 6})
+
+    bbox_props = dict(boxstyle="square,pad=0.3", fc="w", ec="k", lw=0.72)
+    kw = dict(arrowprops=dict(arrowstyle="-"),
+          bbox=bbox_props, zorder=0, va="center")
+
+    # add labels
+    for i, p in enumerate(wedges):
+        angle_chart = (p.theta2 - p.theta1)/2. + p.theta1
+        y = np.sin(np.deg2rad( angle_chart))
+        x = np.cos(np.deg2rad( angle_chart))
+        horizontalalignment = {-1: "right", 1: "left"}[int(np.sign(x))]
+        connectionstyle = "angle,angleA=0,angleB={}".format( angle_chart)
+        kw["arrowprops"].update({"connectionstyle": connectionstyle})
+        ax.annotate(labels_chart[i], xy=(x, y), xytext=(1.35*np.sign(x), 1.4*y),
+                horizontalalignment=horizontalalignment, **kw)
+
+    ax.set_title("Organisms of all proteins")
 
     # plot is saved in BytesIO object
     img_io = BytesIO()
