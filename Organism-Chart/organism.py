@@ -57,8 +57,6 @@ def create_chart():
         ax.annotate(labels_chart[i], xy=(x, y), xytext=(1.35*np.sign(x), 1.4*y),
                 horizontalalignment=horizontalalignment, **kw)
 
-    ax.set_title("Organisms of all proteins")
-
     # plot is saved in BytesIO object
     img_io = BytesIO()
     plt.savefig(img_io, format='png')
