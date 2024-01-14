@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <h1>Protein Name Bar Chart</h1>
+</head>
+<body>
+    <div id="bar_chart"></div>
+  <script>
+    var chart_data = {{ bar_chart | tojson | safe }};
+    Plotly.newPlot('bar_chart', chart_data.data, chart_data.layout);
+  </script>
+  <h3> This chart visualizes the protein names of our 89 different proteins. We used the general enzymes to group the proteins.</h3>
+</body>
