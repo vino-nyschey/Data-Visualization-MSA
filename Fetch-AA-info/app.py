@@ -15,7 +15,7 @@ def plot_data(data):
     fig = px.scatter(data, x='Founded Year', y='PDB ID', 
                      labels={'Founded Year': 'Founded Year', 'y': 'PDB ID'},
                      title='Protein Founded Year Timeline',
-                     template='plotly', height=1200)
+                     template='plotly', height=920)
 
     # Update x-axis ticks
     fig.update_xaxes(dtick=1)
