@@ -55,14 +55,16 @@ def create_chart():
            rest_proteins.append(proteinname)
     
     all_proteins = list(set(general_name))
-    count_all_proteins = Counter({label: 0 for label in all_proteins})
-    count_proteinnames = Counter(rest_proteins) + count_all_proteins
-    count_proteinnames = dict(sorted(count_proteinnames.items()))
-    count_human_proteins = Counter(human_proteins) + count_all_proteins
-    count_human_proteins = dict(sorted(count_human_proteins.items()))
-    count_coli_proteins = Counter(coli_proteins) + count_all_proteins
-    count_coli_proteins = dict(sorted(count_coli_proteins.items()))
-    print(count_coli_proteins)
+    count_human_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items())) #each dictionary contains same protein names
+    count_coli_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items()))
+    count_rest_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items()))
+    human = dict(Counter(human_proteins))
+    count_human_proteins.update(human)
+    coli = dict(Counter(coli_proteins))
+    count_coli_proteins.update(coli)
+    rest = dict(Counter(rest_proteins))
+    count_rest_proteins.update(rest)
+
 
     #human proteins
     for proteinname, number in count_human_proteins.items():
@@ -77,7 +79,7 @@ def create_chart():
             count_chart_coli.append(number)
     
     #rest proteins
-    for proteinname, number in count_proteinnames.items():
+    for proteinname, number in count_rest_proteins.items():
         if proteinname.upper() != 'NAN': 
             labels_chart.append(proteinname)
             count_chart.append(number)
