@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sequence List</title>
+</head>
+<body>
+    <h1>Sequence List</h1>
+    <form method="get" action="{{ url_for('index') }}">
+        <button type="submit" name="sort_by" value="length">Sort by Length</button>
+        <button type="submit" name="sort_by" value="name">Sort by Name</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Protein ID</th>
+                <th>Chain ID</th>
+                <th>Sequence Length</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sequence in sequences %}
+                <tr>
+                    <td>{{ sequence.name.split(':')[0] }}</td>
+                    <td>{{ sequence.name.split(':')[1].split('|')[0] }}</td>
+                    <td>{{ sequence.length }}</td>
+                    <td><a href="{{ url_for('view_sequence', seq_name=sequence.name) }}">View</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
