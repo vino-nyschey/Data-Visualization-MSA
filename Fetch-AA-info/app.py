@@ -20,6 +20,9 @@ def plot_data(data):
     # Update x-axis ticks
     fig.update_xaxes(dtick=1)
 
+    # The 'text' argument specifies what information to display when hovering over a point
+    fig.update_traces(text=data['Protein Name'])
+
     return fig
 
 @app.route('/')
