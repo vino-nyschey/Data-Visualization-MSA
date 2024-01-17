@@ -25,7 +25,7 @@ def add_protein_family_info(data):
     for entry in data:
         protein_name = entry.get('Protein Name')
         if protein_name:
-            # Handle specific cases for "ACYL-HYDROLASE" and "S-TRANSFERASE"
+            # Handle specific cases"
             if "ACYL-HYDROLASE" in protein_name:
                 ase_word = "HYDROLASE"
             elif "PHOSPHOFRUCTO-2-KINASE/" in protein_name:
@@ -40,6 +40,8 @@ def add_protein_family_info(data):
                 ase_word = "TRANSFERASE"
             elif "PHOSPHOLIPASE" in protein_name:
                 ase_word = "LIPASE"
+            elif "PROTEIN-TYROSINE-PHOSPHATASE" in protein_name:
+                ase_word = "PHOSPHATASE"
             else:
                 # Extract a word containing "ase" or "peptide" from 'Protein Name'
                 ase_word = extract_ase_word(protein_name)
@@ -62,9 +64,26 @@ def add_chain_count(data):
 
     return data
 
+def convert_founded_date_to_year(data):
+    for entry in data:
+        founded_date = entry.get('Founded Date')
+        if founded_date:
+            # Extract the year from the founded date and update the entry
+            year_match = re.search(r'\d{2}-[A-Z]{3}-(\d{2})', founded_date)
+            if year_match:
+                year = year_match.group(1)
+                entry['Discovered Year'] = "19" + year if int(year) > 60 else "20" + year
+                del entry['Founded Date']  # Remove the "Founded Date" entry
+            else:
+                entry['Discovered Year'] = None
+        else:
+            entry['Discovered Year'] = None
+    
+    return data
+
 # Replace 'output_data.json' with the actual path to your JSON file
-input_json_path = 'output_data.json'
-output_json_path = 'added_protein_cluster.json'
+input_json_path = 'fetched_data.json'
+output_json_path = 'ProteinDatabase.json'
 
 # Load existing data from JSON file
 with open(input_json_path, 'r') as json_file:
@@ -76,8 +95,11 @@ data_with_family = add_protein_family_info(existing_data)
 # Add chain count information to each entry
 data_with_chain_count = add_chain_count(data_with_family)
 
+# Convert Founded Date to Discovered Year and remove Founded Date
+data_with_discovered_year = convert_founded_date_to_year(data_with_chain_count)
+
 # Save the updated data to a new JSON file
 with open(output_json_path, 'w') as json_file:
-    json.dump(data_with_chain_count, json_file, indent=2)
+    json.dump(data_with_discovered_year, json_file, indent=2)
 
-print(f"Data with Protein Family and Chain Count information exported to {output_json_path}")
+print(f"Data with Protein Family, Chain Count, and Discovered Year information exported to {output_json_path}")
