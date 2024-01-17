@@ -1,6 +1,7 @@
 import json
 import csv
 import re
+import collections
 
 def clean_ase_word(word):
     # Remove prefixes ending with "-" and suffixes starting with ","
@@ -51,6 +52,16 @@ def add_protein_family_info(data):
     
     return data
 
+def add_chain_count(data):
+    pdb_id_counts = collections.Counter(entry.get('PDB ID') for entry in data)
+
+    for entry in data:
+        pdb_id = entry.get('PDB ID')
+        if pdb_id:
+            entry['No. of Chains'] = pdb_id_counts[pdb_id]
+
+    return data
+
 # Replace 'output_data.json' with the actual path to your JSON file
 input_json_path = 'output_data.json'
 output_json_path = 'added_protein_cluster.json'
@@ -62,8 +73,11 @@ with open(input_json_path, 'r') as json_file:
 # Add protein family information to each entry
 data_with_family = add_protein_family_info(existing_data)
 
+# Add chain count information to each entry
+data_with_chain_count = add_chain_count(data_with_family)
+
 # Save the updated data to a new JSON file
 with open(output_json_path, 'w') as json_file:
-    json.dump(data_with_family, json_file, indent=2)
+    json.dump(data_with_chain_count, json_file, indent=2)
 
-print(f"Data with Protein Family information exported to {output_json_path}")
+print(f"Data with Protein Family and Chain Count information exported to {output_json_path}")
