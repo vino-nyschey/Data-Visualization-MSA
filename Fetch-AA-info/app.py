@@ -28,7 +28,7 @@ def plot_data(data):
 @app.route('/')
 def index():
     # Read data from CSV file
-    csv_file_path = 'output_data.csv'
+    csv_file_path = 'added_protein_cluster.csv'
     if not os.path.exists(csv_file_path):
         return "CSV file not found."
 
