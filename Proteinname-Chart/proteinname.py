@@ -42,6 +42,12 @@ def create_chart():
             general_name.append('Esterase')
         elif 'HYDROLASE' in proteinname.upper(): 
             general_name.append('Hydrolase')
+        elif 'PEPTIDE' in proteinname.upper(): 
+            general_name.append('Peptide')
+        elif 'PHOSPHORYLASE' in proteinname.upper(): 
+            general_name.append('Phosphorylase')
+        elif 'POLYMERASE' in proteinname.upper(): 
+            general_name.append('Polymerase')
         else: 
             general_name.append(proteinname) 
     
@@ -68,21 +74,18 @@ def create_chart():
 
     #human proteins
     for proteinname, number in count_human_proteins.items():
-        if proteinname.upper() != 'NAN': 
-            labels_chart_human.append(proteinname)
-            count_chart_human.append(number)
+        labels_chart_human.append(proteinname)
+        count_chart_human.append(number)
     
     #E.coli proteins
     for proteinname, number in count_coli_proteins.items():
-        if proteinname.upper() != 'NAN': 
-            labels_chart_coli.append(proteinname)
-            count_chart_coli.append(number)
+        labels_chart_coli.append(proteinname)
+        count_chart_coli.append(number)
     
     #rest proteins
     for proteinname, number in count_rest_proteins.items():
-        if proteinname.upper() != 'NAN': 
-            labels_chart.append(proteinname)
-            count_chart.append(number)
+        labels_chart.append(proteinname)
+        count_chart.append(number)
 
     #create bar chart
     fig = go.Figure()
@@ -132,6 +135,7 @@ def create_chart():
         )
     ])
 
+    fig.update_layout(xaxis_range=[0,25])
     fig.update_layout(barmode='stack')
     fig.update_layout(hovermode="x unified") #hovermode
     chart_data = json.loads(fig.to_json()) #save as json
