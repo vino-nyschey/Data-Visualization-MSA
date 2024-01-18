@@ -11,7 +11,7 @@ with open(input_json_path, 'r') as json_file:
     existing_data = json.load(json_file)
 
 # Specify the columns to include in the TSV table
-columns_to_include = ["PDB ID", "Protein Name", "Protein Family", "Organism", "Engineered"]
+columns_to_include = ["PDB ID", "Protein Name", "Protein Family", "Organism", "Engineered","Species Name"]
 
 # Create a folder to save the TSV file
 os.makedirs(output_tsv_folder, exist_ok=True)
