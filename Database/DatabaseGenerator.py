@@ -1,5 +1,4 @@
 import json
-import csv
 import re
 import collections
 
@@ -38,10 +37,14 @@ def add_protein_family_info(data):
                 ase_word = "ESTERASE"
             elif "AMINOTRANSFERASE" in protein_name:
                 ase_word = "TRANSFERASE"
+            elif "METHYLTRANSFERASE" in protein_name:
+                ase_word = "TRANSFERASE"
             elif "PHOSPHOLIPASE" in protein_name:
                 ase_word = "LIPASE"
             elif "PROTEIN-TYROSINE-PHOSPHATASE" in protein_name:
                 ase_word = "PHOSPHATASE"
+            elif "COLIPASE" in protein_name:
+                ase_word = "LIPASE"
             else:
                 # Extract a word containing "ase" or "peptide" from 'Protein Name'
                 ase_word = extract_ase_word(protein_name)
@@ -81,7 +84,7 @@ def convert_founded_date_to_year(data):
     
     return data
 
-# Replace 'output_data.json' with the actual path to your JSON file
+# Replace 'output_data.json' with the actual path to JSON file
 input_json_path = 'fetched_data.json'
 output_json_path = 'ProteinDatabase.json'
 
