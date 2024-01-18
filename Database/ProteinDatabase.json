@@ -9,7 +9,8 @@
     "Sequence Length": 245,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1AKN:A",
@@ -21,7 +22,8 @@
     "Sequence Length": 579,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1AQL:A",
@@ -33,7 +35,8 @@
     "Sequence Length": 532,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1AQL:B",
@@ -45,7 +48,8 @@
     "Sequence Length": 532,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1BU8:A",
@@ -57,7 +61,8 @@
     "Sequence Length": 452,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1CLE:A",
@@ -69,7 +74,8 @@
     "Sequence Length": 534,
     "Protein Family": "ESTERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "CANDIDA SP."
   },
   {
     "Sequence ID": "1CLE:B",
@@ -81,7 +87,8 @@
     "Sequence Length": 534,
     "Protein Family": "ESTERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "CANDIDA SP."
   },
   {
     "Sequence ID": "1CRL:A",
@@ -93,7 +100,8 @@
     "Sequence Length": 534,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "1993"
+    "Discovered Year": "1993",
+    "Species Name": "CANDIDA SP."
   },
   {
     "Sequence ID": "1CVL:A",
@@ -105,7 +113,8 @@
     "Sequence Length": 319,
     "Protein Family": "HYDROLASE",
     "No. of Chains": 1,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1DT3:A",
@@ -117,7 +126,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT3:B",
@@ -129,7 +139,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT5:A",
@@ -141,7 +152,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 8,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT5:B",
@@ -153,7 +165,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 8,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT5:C",
@@ -165,7 +178,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 8,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT5:D",
@@ -177,7 +191,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 8,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT5:E",
@@ -189,7 +204,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 8,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT5:F",
@@ -201,7 +217,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 8,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT5:G",
@@ -213,7 +230,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 8,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DT5:H",
@@ -225,7 +243,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 8,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DTE:A",
@@ -237,7 +256,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DTE:B",
@@ -249,7 +269,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DU4:A",
@@ -261,7 +282,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DU4:B",
@@ -273,7 +295,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DU4:C",
@@ -285,7 +308,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1DU4:D",
@@ -297,7 +321,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1EIN:A",
@@ -309,7 +334,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 3,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1EIN:B",
@@ -321,7 +347,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 3,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1EIN:C",
@@ -333,7 +360,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 3,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1ETH:A",
@@ -345,7 +373,8 @@
     "Sequence Length": 448,
     "Protein Family": "HYDROLASE",
     "No. of Chains": 4,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1ETH:B",
@@ -357,7 +386,8 @@
     "Sequence Length": 95,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1ETH:C",
@@ -369,7 +399,8 @@
     "Sequence Length": 448,
     "Protein Family": "HYDROLASE",
     "No. of Chains": 4,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1ETH:D",
@@ -381,7 +412,8 @@
     "Sequence Length": 95,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1EVQ:A",
@@ -393,7 +425,8 @@
     "Sequence Length": 310,
     "Protein Family": "HYDROLASE",
     "No. of Chains": 1,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1EX9:A",
@@ -405,7 +438,8 @@
     "Sequence Length": 285,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1F6W:A",
@@ -417,7 +451,8 @@
     "Sequence Length": 533,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1GPL:A",
@@ -429,7 +464,8 @@
     "Sequence Length": 432,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "1996"
+    "Discovered Year": "1996",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1GT6:A",
@@ -441,7 +477,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2002"
+    "Discovered Year": "2002",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1GT6:B",
@@ -453,7 +490,8 @@
     "Sequence Length": 269,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2002"
+    "Discovered Year": "2002",
+    "Species Name": "THERMOMYCES LANUGINOSUS"
   },
   {
     "Sequence ID": "1GZ7:A",
@@ -465,7 +503,8 @@
     "Sequence Length": 534,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "2002"
+    "Discovered Year": "2002",
+    "Species Name": "CANDIDA SP."
   },
   {
     "Sequence ID": "1GZ7:B",
@@ -477,7 +516,8 @@
     "Sequence Length": 534,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "2002"
+    "Discovered Year": "2002",
+    "Species Name": "CANDIDA SP."
   },
   {
     "Sequence ID": "1GZ7:C",
@@ -489,7 +529,8 @@
     "Sequence Length": 534,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "2002"
+    "Discovered Year": "2002",
+    "Species Name": "CANDIDA SP."
   },
   {
     "Sequence ID": "1GZ7:D",
@@ -501,7 +542,8 @@
     "Sequence Length": 534,
     "Protein Family": "LIPASE",
     "No. of Chains": 4,
-    "Discovered Year": "2002"
+    "Discovered Year": "2002",
+    "Species Name": "CANDIDA SP."
   },
   {
     "Sequence ID": "1HLG:A",
@@ -513,7 +555,8 @@
     "Sequence Length": 371,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "1999"
+    "Discovered Year": "1999",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1HLG:B",
@@ -525,7 +568,8 @@
     "Sequence Length": 371,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "1999"
+    "Discovered Year": "1999",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1HPL:A",
@@ -537,7 +581,8 @@
     "Sequence Length": 449,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "1993"
+    "Discovered Year": "1993",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1HPL:B",
@@ -549,7 +594,8 @@
     "Sequence Length": 449,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "1993"
+    "Discovered Year": "1993",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1HQD:A",
@@ -561,7 +607,8 @@
     "Sequence Length": 320,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "2000"
+    "Discovered Year": "2000",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1I6W:A",
@@ -573,7 +620,8 @@
     "Sequence Length": 181,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1I6W:B",
@@ -585,7 +633,8 @@
     "Sequence Length": 181,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1ISP:A",
@@ -597,7 +646,8 @@
     "Sequence Length": 181,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1JFR:A",
@@ -609,7 +659,8 @@
     "Sequence Length": 262,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1JFR:B",
@@ -621,7 +672,8 @@
     "Sequence Length": 262,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1JI3:A",
@@ -633,7 +685,8 @@
     "Sequence Length": 388,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1JI3:B",
@@ -645,7 +698,8 @@
     "Sequence Length": 388,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1JJI:A",
@@ -657,7 +711,8 @@
     "Sequence Length": 311,
     "Protein Family": "ESTERASE",
     "No. of Chains": 4,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1JJI:B",
@@ -669,7 +724,8 @@
     "Sequence Length": 311,
     "Protein Family": "ESTERASE",
     "No. of Chains": 4,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1JJI:C",
@@ -681,7 +737,8 @@
     "Sequence Length": 311,
     "Protein Family": "ESTERASE",
     "No. of Chains": 4,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1JJI:D",
@@ -693,7 +750,8 @@
     "Sequence Length": 311,
     "Protein Family": "ESTERASE",
     "No. of Chains": 4,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1JKM:A",
@@ -705,7 +763,8 @@
     "Sequence Length": 361,
     "Protein Family": "ESTERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1JKM:B",
@@ -717,7 +776,8 @@
     "Sequence Length": 361,
     "Protein Family": "ESTERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1JMY:A",
@@ -729,7 +789,8 @@
     "Sequence Length": 522,
     "Protein Family": "LIPASE",
     "No. of Chains": 1,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1K8Q:A",
@@ -741,7 +802,8 @@
     "Sequence Length": 377,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1K8Q:B",
@@ -753,7 +815,8 @@
     "Sequence Length": 377,
     "Protein Family": "LIPASE",
     "No. of Chains": 2,
-    "Discovered Year": "2001"
+    "Discovered Year": "2001",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1A17:A",
@@ -765,7 +828,8 @@
     "Sequence Length": 166,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 1,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A5Y:A",
@@ -777,7 +841,8 @@
     "Sequence Length": 330,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A6Q:A",
@@ -789,7 +854,8 @@
     "Sequence Length": 382,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1AAX:A",
@@ -801,7 +867,8 @@
     "Sequence Length": 321,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 1,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1AJA:A",
@@ -813,7 +880,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1AJA:B",
@@ -825,7 +893,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1AJB:A",
@@ -837,7 +906,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1AJB:B",
@@ -849,7 +919,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1AJC:A",
@@ -861,7 +932,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1AJC:B",
@@ -873,7 +945,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1AJD:A",
@@ -885,7 +958,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1AJD:B",
@@ -897,7 +971,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ALH:A",
@@ -909,7 +984,8 @@
     "Sequence Length": 446,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ALH:B",
@@ -921,7 +997,8 @@
     "Sequence Length": 446,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ALI:A",
@@ -933,7 +1010,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ALI:B",
@@ -945,7 +1023,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ALJ:A",
@@ -957,7 +1036,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ALJ:B",
@@ -969,7 +1049,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ALK:A",
@@ -981,7 +1062,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1993"
+    "Discovered Year": "1993",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ALK:B",
@@ -993,7 +1075,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1993"
+    "Discovered Year": "1993",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ANI:A",
@@ -1005,7 +1088,8 @@
     "Sequence Length": 446,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ANI:B",
@@ -1017,7 +1101,8 @@
     "Sequence Length": 446,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ANJ:A",
@@ -1029,7 +1114,8 @@
     "Sequence Length": 446,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1ANJ:B",
@@ -1041,7 +1127,8 @@
     "Sequence Length": 446,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1995"
+    "Discovered Year": "1995",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1AUI:A",
@@ -1053,7 +1140,8 @@
     "Sequence Length": 521,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1AUI:B",
@@ -1065,7 +1153,8 @@
     "Sequence Length": 169,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1AUZ:A",
@@ -1077,7 +1166,8 @@
     "Sequence Length": 116,
     "Protein Family": "OTHER",
     "No. of Chains": 1,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1AWB:A",
@@ -1089,7 +1179,8 @@
     "Sequence Length": 276,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1AWB:B",
@@ -1101,7 +1192,8 @@
     "Sequence Length": 276,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1AY3:A",
@@ -1113,7 +1205,8 @@
     "Sequence Length": 5,
     "Protein Family": "OTHER",
     "No. of Chains": 1,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1AYA:A",
@@ -1125,7 +1218,8 @@
     "Sequence Length": 101,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 4,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1AYA:B",
@@ -1137,7 +1231,8 @@
     "Sequence Length": 101,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 4,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1AYA:P",
@@ -1149,7 +1244,8 @@
     "Sequence Length": 11,
     "Protein Family": "PEPTIDE",
     "No. of Chains": 4,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1AYA:Q",
@@ -1161,7 +1257,8 @@
     "Sequence Length": 11,
     "Protein Family": "PEPTIDE",
     "No. of Chains": 4,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1AYB:A",
@@ -1173,7 +1270,8 @@
     "Sequence Length": 101,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1AYB:P",
@@ -1185,7 +1283,8 @@
     "Sequence Length": 12,
     "Protein Family": "PEPTIDE",
     "No. of Chains": 2,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1AYC:A",
@@ -1197,7 +1296,8 @@
     "Sequence Length": 101,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1AYC:P",
@@ -1209,7 +1309,8 @@
     "Sequence Length": 11,
     "Protein Family": "PEPTIDE",
     "No. of Chains": 2,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1AYD:A",
@@ -1221,7 +1322,8 @@
     "Sequence Length": 101,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 1,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "MUS MUSCULUS"
   },
   {
     "Sequence ID": "1B10:A",
@@ -1233,7 +1335,8 @@
     "Sequence Length": 142,
     "Protein Family": "OTHER",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1B3U:A",
@@ -1245,7 +1348,8 @@
     "Sequence Length": 588,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1B3U:B",
@@ -1257,7 +1361,8 @@
     "Sequence Length": 588,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1B8J:A",
@@ -1269,7 +1374,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1999"
+    "Discovered Year": "1999",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1B8J:B",
@@ -1281,7 +1387,8 @@
     "Sequence Length": 449,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1999"
+    "Discovered Year": "1999",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1BIF:A",
@@ -1293,7 +1400,8 @@
     "Sequence Length": 469,
     "Protein Family": "KINASE",
     "No. of Chains": 1,
-    "Discovered Year": "1996"
+    "Discovered Year": "1996",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1BVH:A",
@@ -1305,7 +1413,8 @@
     "Sequence Length": 157,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 1,
-    "Discovered Year": "1994"
+    "Discovered Year": "1994",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1BZC:A",
@@ -1317,7 +1426,8 @@
     "Sequence Length": 321,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1BZH:A",
@@ -1329,7 +1439,8 @@
     "Sequence Length": 298,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1BZH:I",
@@ -1341,7 +1452,8 @@
     "Sequence Length": 7,
     "Protein Family": "PHOSPHATASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "10GS:A",
@@ -1353,7 +1465,8 @@
     "Sequence Length": 209,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "10GS:B",
@@ -1365,7 +1478,8 @@
     "Sequence Length": 209,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "10MH:A",
@@ -1377,7 +1491,8 @@
     "Sequence Length": 327,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 3,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "10MH:B",
@@ -1389,7 +1504,8 @@
     "Sequence Length": 12,
     "Protein Family": "OTHER",
     "No. of Chains": 3,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "10MH:C",
@@ -1401,7 +1517,8 @@
     "Sequence Length": 12,
     "Protein Family": "OTHER",
     "No. of Chains": 3,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "11GS:A",
@@ -1413,7 +1530,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "11GS:B",
@@ -1425,7 +1543,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "12GS:A",
@@ -1437,7 +1556,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "12GS:B",
@@ -1449,7 +1569,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "13GS:A",
@@ -1461,7 +1582,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "13GS:B",
@@ -1473,7 +1595,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "13PK:A",
@@ -1485,7 +1608,8 @@
     "Sequence Length": 415,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1996"
+    "Discovered Year": "1996",
+    "Species Name": "TRYPANOSOMA BRUCEI"
   },
   {
     "Sequence ID": "13PK:B",
@@ -1497,7 +1621,8 @@
     "Sequence Length": 415,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1996"
+    "Discovered Year": "1996",
+    "Species Name": "TRYPANOSOMA BRUCEI"
   },
   {
     "Sequence ID": "13PK:C",
@@ -1509,7 +1634,8 @@
     "Sequence Length": 415,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1996"
+    "Discovered Year": "1996",
+    "Species Name": "TRYPANOSOMA BRUCEI"
   },
   {
     "Sequence ID": "13PK:D",
@@ -1521,7 +1647,8 @@
     "Sequence Length": 415,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1996"
+    "Discovered Year": "1996",
+    "Species Name": "TRYPANOSOMA BRUCEI"
   },
   {
     "Sequence ID": "14GS:A",
@@ -1533,7 +1660,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "14GS:B",
@@ -1545,7 +1673,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "16GS:A",
@@ -1557,7 +1686,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "16GS:B",
@@ -1569,7 +1699,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "16PK:A",
@@ -1581,7 +1712,8 @@
     "Sequence Length": 415,
     "Protein Family": "KINASE",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "TRYPANOSOMA BRUCEI"
   },
   {
     "Sequence ID": "17GS:A",
@@ -1593,7 +1725,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "17GS:B",
@@ -1605,7 +1738,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "18GS:A",
@@ -1617,7 +1751,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "18GS:B",
@@ -1629,7 +1764,8 @@
     "Sequence Length": 210,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "19GS:A",
@@ -1641,7 +1777,8 @@
     "Sequence Length": 209,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "19GS:B",
@@ -1653,7 +1790,8 @@
     "Sequence Length": 209,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A07:A",
@@ -1665,7 +1803,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A07:B",
@@ -1677,7 +1816,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A07:C",
@@ -1689,7 +1829,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A07:D",
@@ -1701,7 +1842,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A08:A",
@@ -1713,7 +1855,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A08:B",
@@ -1725,7 +1868,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A08:C",
@@ -1737,7 +1881,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A08:D",
@@ -1749,7 +1894,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A09:A",
@@ -1761,7 +1907,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A09:B",
@@ -1773,7 +1920,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A09:C",
@@ -1785,7 +1933,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A09:D",
@@ -1797,7 +1946,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A0F:A",
@@ -1809,7 +1959,8 @@
     "Sequence Length": 201,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1A0F:B",
@@ -1821,7 +1972,8 @@
     "Sequence Length": 201,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1A0G:A",
@@ -1833,7 +1985,8 @@
     "Sequence Length": 282,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1A0G:B",
@@ -1845,7 +1998,8 @@
     "Sequence Length": 282,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 2,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1A1A:A",
@@ -1857,7 +2011,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1A:B",
@@ -1869,7 +2024,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1A:C",
@@ -1881,7 +2037,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1A:D",
@@ -1893,7 +2050,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1B:A",
@@ -1905,7 +2063,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1B:B",
@@ -1917,7 +2076,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1B:C",
@@ -1929,7 +2089,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1B:D",
@@ -1941,7 +2102,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1C:A",
@@ -1953,7 +2115,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1C:B",
@@ -1965,7 +2128,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1C:C",
@@ -1977,7 +2141,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1C:D",
@@ -1989,7 +2154,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1E:A",
@@ -2001,7 +2167,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1E:B",
@@ -2013,7 +2180,8 @@
     "Sequence Length": 107,
     "Protein Family": "KINASE",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1E:C",
@@ -2025,7 +2193,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A1E:D",
@@ -2037,7 +2206,8 @@
     "Sequence Length": 4,
     "Protein Family": "OTHER",
     "No. of Chains": 4,
-    "Discovered Year": "1997"
+    "Discovered Year": "1997",
+    "Species Name": "HOMO SAPIENS"
   },
   {
     "Sequence ID": "1A26:A",
@@ -2049,7 +2219,8 @@
     "Sequence Length": 361,
     "Protein Family": "POLYMERASE",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1A2N:A",
@@ -2061,7 +2232,8 @@
     "Sequence Length": 419,
     "Protein Family": "TRANSFERASE",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1A3C:A",
@@ -2073,7 +2245,8 @@
     "Sequence Length": 181,
     "Protein Family": "OTHER",
     "No. of Chains": 1,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1A3W:A",
@@ -2085,7 +2258,8 @@
     "Sequence Length": 500,
     "Protein Family": "KINASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1A3W:B",
@@ -2097,7 +2271,8 @@
     "Sequence Length": 500,
     "Protein Family": "KINASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1A3X:A",
@@ -2109,7 +2284,8 @@
     "Sequence Length": 500,
     "Protein Family": "KINASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1A3X:B",
@@ -2121,7 +2297,8 @@
     "Sequence Length": 500,
     "Protein Family": "KINASE",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "OTHER SP."
   },
   {
     "Sequence ID": "1A49:A",
@@ -2133,7 +2310,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A49:B",
@@ -2145,7 +2323,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A49:C",
@@ -2157,7 +2336,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A49:D",
@@ -2169,7 +2349,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A49:E",
@@ -2181,7 +2362,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A49:F",
@@ -2193,7 +2375,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A49:G",
@@ -2205,7 +2388,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A49:H",
@@ -2217,7 +2401,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A4X:A",
@@ -2229,7 +2414,8 @@
     "Sequence Length": 181,
     "Protein Family": "OTHER",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1A4X:B",
@@ -2241,7 +2427,8 @@
     "Sequence Length": 181,
     "Protein Family": "OTHER",
     "No. of Chains": 2,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "BACILLUS SP."
   },
   {
     "Sequence ID": "1A5U:A",
@@ -2253,7 +2440,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A5U:B",
@@ -2265,7 +2453,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A5U:C",
@@ -2277,7 +2466,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A5U:D",
@@ -2289,7 +2479,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A5U:E",
@@ -2301,7 +2492,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A5U:F",
@@ -2313,7 +2505,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A5U:G",
@@ -2325,7 +2518,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A5U:H",
@@ -2337,7 +2531,8 @@
     "Sequence Length": 530,
     "Protein Family": "KINASE",
     "No. of Chains": 8,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ORYCTOLAGUS CUNICULUS"
   },
   {
     "Sequence ID": "1A69:A",
@@ -2349,7 +2544,8 @@
     "Sequence Length": 238,
     "Protein Family": "PHOSPHORYLASE",
     "No. of Chains": 3,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1A69:B",
@@ -2361,7 +2557,8 @@
     "Sequence Length": 238,
     "Protein Family": "PHOSPHORYLASE",
     "No. of Chains": 3,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ESCHERICHIA COLI."
   },
   {
     "Sequence ID": "1A69:C",
@@ -2373,6 +2570,7 @@
     "Sequence Length": 238,
     "Protein Family": "PHOSPHORYLASE",
     "No. of Chains": 3,
-    "Discovered Year": "1998"
+    "Discovered Year": "1998",
+    "Species Name": "ESCHERICHIA COLI."
   }
 ]

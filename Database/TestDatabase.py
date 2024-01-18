@@ -12,7 +12,7 @@ with open(input_json_path, 'r') as json_file:
     existing_data = json.load(json_file)
 
 # Define the categories to count
-categories_to_count = ["PDB ID", "Protein Name", "Organism", "Engineered", "Sequence Length", "Protein Family", "No. of Chains", "Discovered Year"]
+categories_to_count = ["PDB ID", "Protein Name", "Organism", "Engineered", "Sequence Length", "Protein Family", "No. of Chains", "Discovered Year", "Species Name"]
 
 # Create a folder to save TSV files
 os.makedirs(output_tsv_folder, exist_ok=True)

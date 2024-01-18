@@ -81,7 +81,32 @@ def convert_founded_date_to_year(data):
                 entry['Discovered Year'] = None
         else:
             entry['Discovered Year'] = None
-    
+
+    return data
+
+
+   
+def cluster_organism(data):
+    organism_counts = collections.Counter(entry.get('Organism') for entry in data)
+
+    for entry in data:
+        organism = entry.get('Organism')
+        if organism:
+            # Cluster organisms based on species names
+            species_name = re.sub(r'[^a-zA-Z\s]', '', organism).strip().upper()
+            
+            # Replace specific keywords with desired labels
+            if 'CANDIDA' in species_name:
+                entry['Species Name'] = 'CANDIDA SP.'
+            elif 'BACILLUS' in species_name:
+                entry['Species Name'] = 'BACILLUS SP.'
+            elif 'ESCHERICHIA COLI' in species_name:
+                entry['Species Name'] = 'ESCHERICHIA COLI.'
+            elif organism_counts[organism] >= 5:
+                entry['Species Name'] = species_name
+            else:
+                entry['Species Name'] = "OTHER SP."
+
     return data
 
 # Replace 'output_data.json' with the actual path to JSON file
@@ -101,8 +126,11 @@ data_with_chain_count = add_chain_count(data_with_family)
 # Convert Founded Date to Discovered Year and remove Founded Date
 data_with_discovered_year = convert_founded_date_to_year(data_with_chain_count)
 
+# Cluster Organism based on species names
+data_with_clustered_organism = cluster_organism(data_with_discovered_year)
+
 # Save the updated data to a new JSON file
 with open(output_json_path, 'w') as json_file:
-    json.dump(data_with_discovered_year, json_file, indent=2)
+    json.dump(data_with_clustered_organism, json_file, indent=2)
 
-print(f"Data with Protein Family, Chain Count, and Discovered Year information exported to {output_json_path}")
+print(f"Data with Protein Family, Chain Count, Discovered Year, and Clustered Organism information exported to {output_json_path}")
