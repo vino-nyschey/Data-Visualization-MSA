@@ -24,12 +24,27 @@ def add_protein_family_info(data):
     for entry in data:
         protein_name = entry.get('Protein Name')
         if protein_name:
-            # Handle specific cases
+            # Handle specific cases"
             if "ACYL-HYDROLASE" in protein_name:
                 ase_word = "HYDROLASE"
             elif "PHOSPHOFRUCTO-2-KINASE/" in protein_name:
                 ase_word = "KINASE"
-            # Add other cases as needed
+            elif "S-TRANSFERASE" in protein_name:
+                ase_word = "TRANSFERASE"
+            elif "MONOPHOSPHATASE" in protein_name:
+                ase_word = "PHOSPHATASE"
+            elif "CARBOXYLESTERASE" in protein_name:
+                ase_word = "ESTERASE"
+            elif "AMINOTRANSFERASE" in protein_name:
+                ase_word = "TRANSFERASE"
+            elif "METHYLTRANSFERASE" in protein_name:
+                ase_word = "TRANSFERASE"
+            elif "PHOSPHOLIPASE" in protein_name:
+                ase_word = "LIPASE"
+            elif "PROTEIN-TYROSINE-PHOSPHATASE" in protein_name:
+                ase_word = "PHOSPHATASE"
+            elif "COLIPASE" in protein_name:
+                ase_word = "LIPASE"
             else:
                 # Extract a word containing "ase" or "peptide" from 'Protein Name'
                 ase_word = extract_ase_word(protein_name)
@@ -39,7 +54,7 @@ def add_protein_family_info(data):
                 entry['Protein Family'] = ase_word
             else:
                 entry['Protein Family'] = "OTHER"
-
+    
     return data
 
 def add_chain_count(data):
