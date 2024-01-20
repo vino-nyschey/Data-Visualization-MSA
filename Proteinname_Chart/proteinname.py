@@ -1,13 +1,11 @@
-from flask import Flask, Blueprint, render_template
 import pandas as pd
 from collections import Counter
 from pathlib import Path
 import plotly.graph_objects as go
-import json
+import plotly.io as pio
 
-proteinname_bp = Blueprint('proteinname', __name__) 
-
-def create_chart():
+def create_bar_chart():
+    print("Calling create_bar_chart()")
     # data for the pie chart
     root_folder = Path(__file__).parents[1]
     my_path = root_folder / "Fetch-AA-info/output_data.csv"
@@ -71,7 +69,6 @@ def create_chart():
     rest = dict(Counter(rest_proteins))
     count_rest_proteins.update(rest)
 
-
     #human proteins
     for proteinname, number in count_human_proteins.items():
         labels_chart_human.append(proteinname)
@@ -89,6 +86,7 @@ def create_chart():
 
     #create bar chart
     fig = go.Figure()
+    #fig = make_subplots(rows=1, cols=3, subplot_titles=['All Organisms', 'Other Proteins', 'Homo Sapiens Proteins', 'E.coli Proteins'])
 
     #add traces
     fig.add_trace(go.Bar(
@@ -97,6 +95,7 @@ def create_chart():
             orientation='h',
             name='other proteins',
             marker_color = 'blue'))
+            #row=1, col=1)
     
     fig.add_trace(go.Bar(
             x=count_chart_human,
@@ -104,6 +103,7 @@ def create_chart():
             orientation='h',
             name='Homo Sapiens proteins',
             marker_color = "red"))
+            #row=1, col=2)
     
     fig.add_trace(go.Bar(
             x=count_chart_coli,
@@ -111,6 +111,7 @@ def create_chart():
             orientation='h',
             name='E.coli proteins',
             marker_color = 'orange'))
+            #row=1, col=3)
     
     fig.update_layout(
     updatemenus=[
@@ -133,16 +134,9 @@ def create_chart():
                      args=[{"visible": [False, False, True]}]),
             ]),
         )
-    ])
+    ], xaxis_range=[0,25], barmode='stack', hovermode="x unified")
 
-    fig.update_layout(xaxis_range=[0,25])
-    fig.update_layout(barmode='stack')
-    fig.update_layout(hovermode="x unified") #hovermode
-    chart_data = json.loads(fig.to_json()) #save as json
+    chart_data = pio.to_json(fig)
 
     #return the dictionary
-    return chart_data
-
-@proteinname_bp.route('/')
-def index_proteinname():
-    return render_template('index_proteinname.html') 
+    return chart_data 

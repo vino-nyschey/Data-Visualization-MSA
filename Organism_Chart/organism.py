@@ -1,4 +1,3 @@
-from flask import Flask, Blueprint, render_template
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
@@ -8,9 +7,8 @@ from pathlib import Path
 import numpy as np
 import seaborn as sns
 
-organism_bp = Blueprint('organism', __name__)
-
-def create_chart():
+def create_pie_chart():
+    print("Calling create_pie_chart()")
     # data for the pie chart
     root_folder = Path(__file__).parents[1]
     my_path = root_folder / "Fetch-AA-info/output_data.csv"
@@ -67,7 +65,3 @@ def create_chart():
     img_base64 = base64.b64encode(img_io.getvalue()).decode('utf-8')
 
     return img_base64
-
-@organism_bp.route('/')
-def index_organism():
-    return render_template('index_organism.html')
