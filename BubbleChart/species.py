@@ -53,8 +53,8 @@ def index():
     # Get unique species names for checkbox buttons
     unique_species = df['Species Name'].unique()
 
-    
-
+    # Initialize selected_species outside of the if-else block
+    selected_species = None
 
     # Inside the Flask route
     if request.method == 'POST':
@@ -62,7 +62,7 @@ def index():
         plot = plot_data(df, selected_species)
         data = df[df['Species Name'].isin(selected_species)].to_dict(orient='records')
     else:
-    # Initial load without species selection
+        # Initial load without species selection
         plot = plot_data(df)
         data = df.to_dict(orient='records')
 
