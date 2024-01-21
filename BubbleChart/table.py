@@ -8,7 +8,7 @@ app = Flask(__name__)
 def load_protein_data():
     # Read JSON data from file
     
-    json_file_path = "ProteinDatabase.json"
+    json_file_path = "Database/ProteinDatabase.json"
 
     if not os.path.exists(json_file_path):
         return None

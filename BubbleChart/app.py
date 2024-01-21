@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import plotly.express as px
 import plotly.offline as pyo
+from pathlib import Path
 from flask import Flask, render_template
 
 app = Flask(__name__)
@@ -34,7 +35,8 @@ def plot_data(data):
 @app.route('/')
 def index():
     # Read JSON data from file
-    json_file_path = 'ProteinDatabase.json'
+    root_folder = Path(__file__).parents[1]
+    json_file_path = root_folder / 'Database/ProteinDatabase.json'
     
     if not os.path.exists(json_file_path):
         return "Error: JSON file not found. Please make sure the file exists."

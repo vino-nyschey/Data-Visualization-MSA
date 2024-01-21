@@ -8,7 +8,6 @@ import numpy as np
 import seaborn as sns
 
 def create_pie_chart():
-    print("Calling create_pie_chart()")
     # data for the pie chart
     root_folder = Path(__file__).parents[1]
     my_path = root_folder / "Database/fetched_data.csv"
