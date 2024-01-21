@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='protein.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Combined Plots</title>
     <!-- Include any necessary CSS stylesheets or libraries here -->
 </head>
 <body>
-    <h1>Combined Plots</h1>
+    <h1>Visualization of 89 Proteins</h1>
     <div class="plot-container">
         <table>
             <td>
                 <div class="organism">
-                    <tr><li><a href="{{ url_for('organism_plot') }}">Histogram</a></li></tr>
+                    <tr><li><a href="{{ url_for('organism_plot') }}">Organism Pie Chart</a></li></tr>
                 </div>
                 <div class="proteinname">
-                    <tr><li><a href="{{ url_for('proteinname_plot') }}">Scatterplot</a></li></tr>
+                    <tr><li><a href="{{ url_for('proteinname_plot') }}">Proteinname Bar Chart</a></li></tr>
                 </div>
             </td>
         </table>

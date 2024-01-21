@@ -8,7 +8,7 @@ def create_bar_chart():
     print("Calling create_bar_chart()")
     # data for the pie chart
     root_folder = Path(__file__).parents[1]
-    my_path = root_folder / "Fetch-AA-info/output_data.csv"
+    my_path = root_folder / "Database/fetched_data.csv"
 
     data =  pd.read_csv(my_path)
     data_filtered = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
