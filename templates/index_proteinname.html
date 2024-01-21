@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='protein.ico') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Protein Name Bar Chart</title>
+</head>
+<body>
+  <div id="bar_chart"></div>
+  <script>
+    var chart_data = {{ chart_data | safe }};
+    console.log(chart_data);  // Add this line for debugging
+    Plotly.newPlot('bar_chart', chart_data.data, chart_data.layout);
+  </script>
+  <h3> This chart visualizes the protein names of our 89 different proteins. We used the general enzyme groupings to categorise the proteins.</h3>
+</body>
+</html>

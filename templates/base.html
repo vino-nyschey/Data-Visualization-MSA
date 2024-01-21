@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='protein.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Include any necessary CSS stylesheets or libraries here -->
+</head>
+<body>
+    <h1>Visualization of 89 Proteins</h1>
+    <div class="plot-container">
+        <table>
+            <td>
+                <div class="organism">
+                    <tr><li><a href="{{ url_for('organism_plot') }}">Organism Pie Chart</a></li></tr>
+                </div>
+                <div class="proteinname">
+                    <tr><li><a href="{{ url_for('proteinname_plot') }}">Proteinname Bar Chart</a></li></tr>
+                </div>
+            </td>
+        </table>
+    </div> 
+    <!-- Include any necessary JavaScript scripts or libraries here -->
+</body>
+</html>

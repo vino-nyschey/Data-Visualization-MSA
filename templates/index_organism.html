@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='protein.ico') }}">
+    <title>Organism Pie Chart</title>
+</head>
+<body>
+    <img src="data:image/png;base64,{{ chart_data }}" alt="Organism Pie Chart">
+    <h5> This chart visualizes the organisms of the 89 different proteins. The numbers in brackets represent the total amount of proteins,
+        which correspond to this organism. Furthermore, the category 'other' contains organisms, where less than 2% of proteins correspond to. 
+    </h5>
+</body>
+</html>
