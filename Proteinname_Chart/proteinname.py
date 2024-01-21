@@ -5,7 +5,6 @@ import plotly.graph_objects as go
 import plotly.io as pio
 
 def create_bar_chart():
-    print("Calling create_bar_chart()")
     # data for the pie chart
     root_folder = Path(__file__).parents[1]
     my_path = root_folder / "Database/fetched_data.csv"
