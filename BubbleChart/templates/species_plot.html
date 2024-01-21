@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protein Data Visualization</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+        function selectAll() {
+            var checkboxes = document.querySelectorAll('input[name="species"]');
+            var selectAllCheckbox = document.getElementById('select-all');
+    
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        }
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,24 +43,9 @@
             background-color: #45a049;
         }
 
-        #bubble-chart {
+        #bubble-chart,
+        #bar-chart {
             margin-top: 20px;
-        }
-
-        #data-table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-
-        #data-table th, #data-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        #data-table th {
-            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -75,50 +70,15 @@
     {% endif %}
 </div>
 
-<!-- Plotly chart container -->
+<!-- Plotly bubble chart container -->
 <div id="bubble-chart">
-    {{ graph_html | safe }}
+    {{ bubble_chart_html | safe }}
 </div>
 
-<!-- Display protein data table -->
-<table id="data-table">
-    <thead>
-        <tr>
-            <th>Sequence ID</th>
-            <th>PDB ID</th>
-            <th>Organism</th>
-            <th>Protein Name</th>
-            <th>Protein Family</th>
-            <th>No. of Chains</th>
-            <th>Discovered Year</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for entry in data %}
-            <tr>
-                <td>{{ entry['Sequence ID'] }}</td>
-                <td>{{ entry['PDB ID'] }}</td>
-                <td>{{ entry['Organism'] }}</td>
-                <td>{{ entry['Protein Name'] }}</td>
-                <td>{{ entry['Protein Family'] }}</td>
-                <td>{{ entry['No. of Chains'] }}</td>
-                <td>{{ entry['Discovered Year'] }}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<script>
-    function selectAll() {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        var selectAllCheckbox = document.getElementById('select-all');
-
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = selectAllCheckbox.checked;
-        });
-    }
-</script>
-
+<!-- Plotly bar chart container -->
+<div id="bar-chart">
+    {{ bar_chart_html | safe }}
+</div>
 
 </body>
 </html>
