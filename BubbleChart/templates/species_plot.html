@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protein Data Visualization</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #bubble-chart {
+            margin-top: 20px;
+        }
+
+        #data-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        #data-table th, #data-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        #data-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Protein Data Visualization</h2>
+
+<!-- Form for species selection -->
+<form method="post" action="/" style="text-align: center;">
+    <label><input type="checkbox" id="select-all" onclick="selectAll()"> Select All</label>
+    {% for species in species %}
+        <input type="checkbox" name="species" value="{{ species }}" id="{{ species }}" {% if species in request.form.getlist('species') %}checked{% endif %} >
+        <label for="{{ species }}">{{ species }}</label>
+    {% endfor %}
+    <button type="submit">Refresh Plot</button>
+</form>
+
+<!-- Display selected species -->
+<div id="selected-species">
+    {% if selected_species %}
+        <strong>Selected Species:</strong> {{ selected_species | join(', ') }}
+    {% endif %}
+</div>
+
+<!-- Plotly chart container -->
+<div id="bubble-chart">
+    {{ graph_html | safe }}
+</div>
+
+<!-- Display protein data table -->
+<table id="data-table">
+    <thead>
+        <tr>
+            <th>Sequence ID</th>
+            <th>PDB ID</th>
+            <th>Organism</th>
+            <th>Protein Name</th>
+            <th>Protein Family</th>
+            <th>No. of Chains</th>
+            <th>Discovered Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in data %}
+            <tr>
+                <td>{{ entry['Sequence ID'] }}</td>
+                <td>{{ entry['PDB ID'] }}</td>
+                <td>{{ entry['Organism'] }}</td>
+                <td>{{ entry['Protein Name'] }}</td>
+                <td>{{ entry['Protein Family'] }}</td>
+                <td>{{ entry['No. of Chains'] }}</td>
+                <td>{{ entry['Discovered Year'] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    function selectAll() {
+        var checkboxes = document.querySelectorAll('input[name="species"]');
+        var selectAllCheckbox = document.getElementById('select-all');
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+    }
+</script>
+
+</body>
+</html>
