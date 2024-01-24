@@ -5,12 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='protein.ico') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Organism Pie Chart</title>
 </head>
 <body>
-    <img src="data:image/png;base64,{{ chart_data }}" alt="Organism Pie Chart">
-    <h5> This chart visualizes the organisms of the 89 different proteins. The numbers in brackets represent the total amount of proteins,
+    <div id="pie_chart"></div>
+    <script>
+      var chart_data = {{ chart_data | safe }};
+      console.log(chart_data);  // Add this line for debugging
+      Plotly.newPlot('pie_chart', chart_data.data, chart_data.layout);
+    </script>
+    <h3> This chart visualizes the organisms of the 89 different proteins. The numbers in brackets represent the total amount of proteins,
         which correspond to this organism. Furthermore, the category 'other' contains organisms, where less than 2% of proteins correspond to. 
-    </h5>
+    </h3>
 </body>
 </html>
