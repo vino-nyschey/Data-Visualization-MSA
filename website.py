@@ -3,7 +3,7 @@ import os
 import json
 import pandas as pd
 
-from BubbleChart.species import plot_bubble_chart, plot_bar_chart
+from BubbleChart.species import plot_bubble_chart, plot_pie_chart
 from Organism_Chart.organism import create_pie_chart
 from Proteinname_Chart.proteinname import create_bar_chart
   
@@ -42,20 +42,20 @@ def bubble_chart():
     if request.method == 'POST':
         selected_species = request.form.getlist('species')
         bubble_chart = plot_bubble_chart(df, selected_species)
-        bar_chart = plot_bar_chart(df, selected_species)
+        pie_chart = plot_pie_chart(df, selected_species)
         data = df[df['Species Name'].isin(selected_species)].to_dict(orient='records')
     else:
         # Initial load without species selection
         bubble_chart = plot_bubble_chart(df)
-        bar_chart = plot_bar_chart(df)
+        pie_chart = plot_pie_chart(df)
         data = df.to_dict(orient='records')
 
     # Save the charts as HTML
     bubble_chart_html = bubble_chart.to_html(full_html=False, include_plotlyjs='cdn')
-    bar_chart_html = bar_chart.to_html(full_html=False, include_plotlyjs='cdn')
+    pie_chart_html = pie_chart.to_html(full_html=False, include_plotlyjs='cdn')
 
     return render_template('species_plot.html', species=unique_species,
-                           bubble_chart_html=bubble_chart_html, bar_chart_html=bar_chart_html,
+                           bubble_chart_html=bubble_chart_html, pie_chart_html=pie_chart_html,
                            data=data, selected_species=selected_species)
 
 @app.route('/Organism_Chart')
