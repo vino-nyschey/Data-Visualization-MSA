@@ -29,15 +29,16 @@ def plot_bubble_chart(data, selected_species=None):
 
     return fig
 
-
 def plot_pie_chart(data, selected_species=None):
     # Filter data based on selected species
     if selected_species:
         data = data[data['Species Name'].isin(selected_species)]
+        data = data[data['Sequence ID'].str.split(':').str[1] == 'A']
+    else: 
+         data = data[data['Sequence ID'].str.split(':').str[1] == 'A']
 
-     # create hovertext
+    # create hovertext
     protein_counts = data['Protein Family'].value_counts()
-    print(protein_counts)
     total_count = sum(protein_counts.values) # total number of organisms
     hovertext = []
     labels_chart = []
