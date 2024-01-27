@@ -14,6 +14,7 @@ def create_bar_chart():
     proteinnames = data_filtered['Protein Name']
     organisms = data_filtered['Organism']
     general_name = [] #grouped names of proteins
+    other_names = [] #protein names part of category other
     human_proteins = []
     coli_proteins = []
     rest_proteins = []
@@ -46,7 +47,8 @@ def create_bar_chart():
         elif 'POLYMERASE' in proteinname.upper(): 
             general_name.append('Polymerase')
         else: 
-            general_name.append(proteinname) 
+            general_name.append('Other')
+            other_names.append(proteinname) 
     
     #divide proteins according to organism
     for proteinname, organism in zip(general_name, organisms):
