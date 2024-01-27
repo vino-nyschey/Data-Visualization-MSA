@@ -4,26 +4,15 @@ from pathlib import Path
 import plotly.graph_objects as go
 import plotly.io as pio
 
-def create_bar_chart():
-    # data for the pie chart
+def categorization(): 
     root_folder = Path(__file__).parents[1]
     my_path = root_folder / "Database/fetched_data.csv"
-
     data =  pd.read_csv(my_path)
     data_filtered = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
     proteinnames = data_filtered['Protein Name']
     organisms = data_filtered['Organism']
     general_name = [] #grouped names of proteins
     other_names = [] #protein names part of category other
-    human_proteins = []
-    coli_proteins = []
-    rest_proteins = []
-    labels_chart = [] #general bar plot
-    labels_chart_human = [] #only human proteins
-    labels_chart_coli = [] #only E.coli proteins
-    count_chart = [] #general bar plot
-    count_chart_human = [] #only human proteins
-    count_chart_coli = [] #only E.coli proteins
 
     # summarize proteins according to general enzyme groupings
     for proteinname in proteinnames:
@@ -49,8 +38,15 @@ def create_bar_chart():
         else: 
             general_name.append('Other')
             other_names.append(proteinname) 
-    
-    #divide proteins according to organism
+
+    return general_name, other_names, organisms
+
+def divideByOrganism(general_name, organisms): 
+    human_proteins = [] #protein names of human proteins
+    coli_proteins = [] #protein names of E.coli proteins
+    rest_proteins = [] #protein names of other proteins
+
+     #divide proteins according to organism
     for proteinname, organism in zip(general_name, organisms):
        if 'HOMO SAPIENS' == organism:
             human_proteins.append(proteinname)
@@ -58,6 +54,16 @@ def create_bar_chart():
            coli_proteins.append(proteinname)
        else: 
            rest_proteins.append(proteinname)
+
+    return human_proteins, coli_proteins, rest_proteins
+
+def labelChart(general_name, human_proteins, coli_proteins, rest_proteins): 
+    labels_chart = [] #general bar plot
+    labels_chart_human = [] #only human proteins
+    labels_chart_coli = [] #only E.coli proteins
+    count_chart = [] #general bar plot
+    count_chart_human = [] #only human proteins
+    count_chart_coli = [] #only E.coli proteins
     
     all_proteins = list(set(general_name))
     count_human_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items())) #each dictionary contains same protein names
@@ -85,6 +91,13 @@ def create_bar_chart():
         labels_chart.append(proteinname)
         count_chart.append(number)
 
+    return count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli
+
+def create_bar_chart():
+    general_name, other_names, organisms = categorization()
+    human_proteins, coli_proteins, rest_proteins = divideByOrganism(general_name, organisms)
+    count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli = labelChart(general_name, human_proteins, coli_proteins, rest_proteins)
+    
     #create bar chart
     fig = go.Figure()
     #fig = make_subplots(rows=1, cols=3, subplot_titles=['All Organisms', 'Other Proteins', 'Homo Sapiens Proteins', 'E.coli Proteins'])
