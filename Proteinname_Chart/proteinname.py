@@ -37,9 +37,11 @@ def categorization():
             general_name.append('Polymerase')
         else: 
             general_name.append('Other')
-            other_names.append(proteinname) 
+            other_names.append(proteinname.capitalize()) 
 
-    return general_name, other_names, organisms
+    count_others = Counter(other_names)
+
+    return general_name, count_others, organisms
 
 def divideByOrganism(general_name, organisms): 
     human_proteins = [] #protein names of human proteins
@@ -57,13 +59,16 @@ def divideByOrganism(general_name, organisms):
 
     return human_proteins, coli_proteins, rest_proteins
 
-def labelChart(general_name, human_proteins, coli_proteins, rest_proteins): 
-    labels_chart = [] #general bar plot
+def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others): 
+    labels_chart = [] #rest bar plot
     labels_chart_human = [] #only human proteins
     labels_chart_coli = [] #only E.coli proteins
-    count_chart = [] #general bar plot
-    count_chart_human = [] #only human proteins
-    count_chart_coli = [] #only E.coli proteins
+    count_chart = [] 
+    count_chart_human = [] 
+    count_chart_coli = [] 
+    hovertext = []
+    hovertext_human = [] 
+    hovertext_coli = [] 
     
     all_proteins = list(set(general_name))
     count_human_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items())) #each dictionary contains same protein names
@@ -75,29 +80,43 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins):
     count_coli_proteins.update(coli)
     rest = dict(Counter(rest_proteins))
     count_rest_proteins.update(rest)
+    total_count = sum(count_human_proteins.values()) + sum(count_coli_proteins.values()) + sum(count_rest_proteins.values())
 
     #human proteins
     for proteinname, number in count_human_proteins.items():
         labels_chart_human.append(proteinname)
         count_chart_human.append(number)
+        if "Other" in proteinname:
+            hovertext_human.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
+        else:
+            hovertext_human.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
     
     #E.coli proteins
     for proteinname, number in count_coli_proteins.items():
         labels_chart_coli.append(proteinname)
         count_chart_coli.append(number)
+        if "Other" in proteinname:
+            hovertext_coli.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
+        else:
+            hovertext_coli.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
     
     #rest proteins
     for proteinname, number in count_rest_proteins.items():
         labels_chart.append(proteinname)
         count_chart.append(number)
-
-    return count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli
+        if "Other" in proteinname:
+            hovertext.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
+        else:
+            hovertext.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
+   
+    return count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human
 
 def create_bar_chart():
-    general_name, other_names, organisms = categorization()
+    general_name, count_others, organisms = categorization()
     human_proteins, coli_proteins, rest_proteins = divideByOrganism(general_name, organisms)
-    count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli = labelChart(general_name, human_proteins, coli_proteins, rest_proteins)
+    count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human = labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others)
     
+
     #create bar chart
     fig = go.Figure()
     #fig = make_subplots(rows=1, cols=3, subplot_titles=['All Organisms', 'Other Proteins', 'Homo Sapiens Proteins', 'E.coli Proteins'])
@@ -108,24 +127,27 @@ def create_bar_chart():
             y=labels_chart,
             orientation='h',
             name='other proteins',
-            marker_color = 'blue'))
-            #row=1, col=1)
+            marker_color = 'blue',
+            hoverinfo='text',
+            hovertext=hovertext))
     
     fig.add_trace(go.Bar(
             x=count_chart_human,
             y=labels_chart_human,
             orientation='h',
             name='Homo Sapiens proteins',
-            marker_color = "red"))
-            #row=1, col=2)
+            marker_color = "red",
+            hoverinfo='text',
+            hovertext=hovertext_human))
     
     fig.add_trace(go.Bar(
             x=count_chart_coli,
             y=labels_chart_coli,
             orientation='h',
             name='E.coli proteins',
-            marker_color = 'orange'))
-            #row=1, col=3)
+            marker_color = 'orange',
+            hoverinfo='text',
+            hovertext=hovertext_coli))
     
     fig.update_layout(
     updatemenus=[
@@ -148,7 +170,7 @@ def create_bar_chart():
                      args=[{"visible": [False, False, True]}]),
             ]),
         )
-    ], xaxis_range=[0,25], barmode='stack', hovermode="x unified")
+    ], xaxis_range=[0,25], barmode='stack')
 
     chart_data = pio.to_json(fig)
 
