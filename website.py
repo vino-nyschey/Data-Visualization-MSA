@@ -58,7 +58,7 @@ def chart():
     organism_plot = create_pie_chart()
     proteinname_plot = create_bar_chart()
 
-    return render_template('species_plot.html', species=unique_species,
+    return render_template('index.html', species=unique_species,
                            bubble_chart_html=bubble_chart_html, pie_chart_html=pie_chart_html,
                            data=data, selected_species=selected_species, chart_data_org=organism_plot, chart_data_pro=proteinname_plot)
 
