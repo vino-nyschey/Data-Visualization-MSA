@@ -125,7 +125,7 @@ def create_bar_chart():
             y=labels_chart,
             orientation='h',
             name='other proteins',
-            marker_color = 'blue',
+            marker_color = '#636EFA',
             hoverinfo='text',
             hovertext=hovertext))
     
@@ -134,7 +134,7 @@ def create_bar_chart():
             y=labels_chart_human,
             orientation='h',
             name='Homo Sapiens proteins',
-            marker_color = "red",
+            marker_color = "#EF553B",
             hoverinfo='text',
             hovertext=hovertext_human))
     
@@ -143,7 +143,7 @@ def create_bar_chart():
             y=labels_chart_coli,
             orientation='h',
             name='E.coli proteins',
-            marker_color = 'orange',
+            marker_color = '#FFA15A',
             hoverinfo='text',
             hovertext=hovertext_coli))
     
