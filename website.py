@@ -18,7 +18,7 @@ def base():
     return render_template('base.html')
 
 @app.route('/species', methods=['GET', 'POST'])
-def bubble_chart():
+def chart():
     # Read JSON data from file
     json_file_path = 'Database/ProteinDatabase.json'
     
@@ -54,19 +54,13 @@ def bubble_chart():
     bubble_chart_html = bubble_chart.to_html(full_html=False, include_plotlyjs='cdn')
     pie_chart_html = pie_chart.to_html(full_html=False, include_plotlyjs='cdn')
 
+    #plot other charts
+    organism_plot = create_pie_chart()
+    proteinname_plot = create_bar_chart()
+
     return render_template('species_plot.html', species=unique_species,
                            bubble_chart_html=bubble_chart_html, pie_chart_html=pie_chart_html,
-                           data=data, selected_species=selected_species)
-
-@app.route('/Organism_Chart')
-def organism_plot(): 
-    chart = create_pie_chart()
-    return render_template('index_organism.html', chart_data=chart)
-
-@app.route('/Proteinname_Chart')
-def proteinname_plot(): 
-    chart = create_bar_chart()
-    return render_template('index_proteinname.html', chart_data=chart)
+                           data=data, selected_species=selected_species, chart_data_org=organism_plot, chart_data_pro=proteinname_plot)
 
 if __name__ == '__main__':
     app.run(debug=True)
