@@ -43,8 +43,8 @@ def plot_pie_chart(data, selected_species=None):
     hovertext = []
     labels_chart = []
     for name, number in zip(protein_counts.index, protein_counts.values):
-            hovertext.append(f"{name.capitalize()} ({number})<br> {number/total_count:.2%}")
-            labels_chart.append(f"{name.capitalize()} ({number})")
+        labels_chart.append(f"{name.capitalize()} ({number})")
+        hovertext.append(f"{name.capitalize()} ({number})<br> {number/total_count:.2%}")
       
     # Create a bar chart with the count of occurrences for each Protein Family
     fig = go.Figure(data=[go.Pie(labels=labels_chart,
