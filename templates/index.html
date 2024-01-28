@@ -45,17 +45,19 @@
 </div>
 
 <!-- Plotly pie chart container -->
-<div id="pie-chart">
-    {{ pie_chart_html | safe }}
+<div class="pie-charts-container">
+    <!-- first container -->
+    <div id="pie-chart">
+        {{ pie_chart_html | safe }}
+    </div>
+    <!-- second container -->
+    <div id="pie_chart"></div>
+    <script>
+        var chart_data = {{ chart_data_org | safe }};
+        console.log(chart_data);  // Add this line for debugging
+        Plotly.newPlot('pie_chart', chart_data.data, chart_data.layout);
+    </script>
 </div>
-
-<!-- Plotly pie chart container -->
-<div id="pie_chart"></div>
-<script>
-    var chart_data = {{ chart_data_org | safe }};
-    console.log(chart_data);  // Add this line for debugging
-    Plotly.newPlot('pie_chart', chart_data.data, chart_data.layout);
-</script>
 
 <!-- Plotly bar chart container -->
 <div id="bar_chart"></div>
