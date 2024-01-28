@@ -33,8 +33,6 @@ def categorization():
             general_name.append('Peptide')
         elif 'PHOSPHORYLASE' in proteinname.upper(): 
             general_name.append('Phosphorylase')
-        elif 'POLYMERASE' in proteinname.upper(): 
-            general_name.append('Polymerase')
         else: 
             general_name.append('Other')
             other_names.append(proteinname.capitalize()) 
