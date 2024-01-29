@@ -29,3 +29,13 @@ button:hover {
 #bar-chart {
     margin-top: 20px;
 }
+
+.pie-charts-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute space evenly between pie charts */
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+
+.pie-chart {
+    width: 48%; /* Set the width of each pie chart container */
+}
