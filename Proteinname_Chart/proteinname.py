@@ -3,14 +3,23 @@ from collections import Counter
 from pathlib import Path
 import plotly.graph_objects as go
 import plotly.io as pio
+import os
+import json
 
-def categorization(): 
-    root_folder = Path(__file__).parents[1]
-    my_path = root_folder / "Database/fetched_data.csv"
-    data =  pd.read_csv(my_path)
-    data_filtered = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
-    proteinnames = data_filtered['Protein Name']
-    organisms = data_filtered['Organism']
+def categorization(selected_species): 
+    with open(os.path.abspath("./Database/ProteinDatabase.json"), "r") as file: 
+        data = json.load(file)
+    data = pd.json_normalize(data)
+
+    # Filter data based on selected species
+    if selected_species:
+        data = data[data['Species Name'].isin(selected_species)]
+        data = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
+    else: 
+         data = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
+
+    proteinnames = data['Protein Name']
+    organisms = data['Organism']
     general_name = [] #grouped names of proteins
     other_names = [] #protein names part of category other
 
@@ -109,16 +118,14 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
    
     return count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human
 
-def create_bar_chart():
-    general_name, count_others, organisms = categorization()
+def create_bar_chart(selected_species=None):
+    general_name, count_others, organisms = categorization(selected_species)
     human_proteins, coli_proteins, rest_proteins = divideByOrganism(general_name, organisms)
     count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human = labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others)
-    
 
     #create bar chart
     fig = go.Figure()
-    #fig = make_subplots(rows=1, cols=3, subplot_titles=['All Organisms', 'Other Proteins', 'Homo Sapiens Proteins', 'E.coli Proteins'])
-
+    
     #add traces
     fig.add_trace(go.Bar(
             x=count_chart,

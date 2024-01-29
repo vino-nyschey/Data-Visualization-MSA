@@ -34,7 +34,6 @@ def create_pie_chart():
             count_other.append(number)
     labels_chart.append(f"{'Other Organisms'} ({total_other})")
     count_chart.append(total_other)
-    print(labels_chart)
     
     # create hovertext
     hovertext = []
