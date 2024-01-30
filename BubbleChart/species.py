@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 def plot_bubble_chart(data, selected_species=None):
     # Convert 'Discovered Year' to integer
     data['Discovered Year'] = pd.to_numeric(data['Discovered Year'], errors='coerce')
+    data = data[data['Sequence ID'].str.split(':').str[1] != 'P'] # delete sequence with chain P
+    data = data[data['Sequence ID'].str.split(':').str[1] != 'Q'] # delete sequence with chain Q
 
     # Filter data based on selected species
     if selected_species:
