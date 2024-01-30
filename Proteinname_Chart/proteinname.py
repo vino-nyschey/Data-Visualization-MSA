@@ -19,7 +19,7 @@ def categorization(selected_species):
          data = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
 
     proteinnames = data['Protein Name']
-    organisms = data['Organism']
+    organisms = data['Species Name']
     general_name = [] #grouped names of proteins
     other_names = [] #protein names part of category other
 
@@ -57,9 +57,10 @@ def divideByOrganism(general_name, organisms):
 
      #divide proteins according to organism
     for proteinname, organism in zip(general_name, organisms):
+       print(organism)
        if 'HOMO SAPIENS' == organism:
             human_proteins.append(proteinname)
-       elif 'ESCHERICHIA COLI' == organism: 
+       elif 'ESCHERICHIA COLI.' == organism: 
            coli_proteins.append(proteinname)
        else: 
            rest_proteins.append(proteinname)
