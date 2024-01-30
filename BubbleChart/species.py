@@ -11,7 +11,6 @@ def plot_bubble_chart(data, selected_species=None):
     # Filter data based on selected species
     if selected_species:
         data = data[data['Species Name'].isin(selected_species)]
-        data = data[data['Organism'].isin(selected_species)]
 
     # Create a bubble chart with Sequence ID on the x-axis
     fig = px.scatter(data, x='Sequence ID', y='Discovered Year', 
