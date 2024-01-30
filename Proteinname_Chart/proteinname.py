@@ -57,7 +57,6 @@ def divideByOrganism(general_name, organisms):
 
      #divide proteins according to organism
     for proteinname, organism in zip(general_name, organisms):
-       print(organism)
        if 'HOMO SAPIENS' == organism:
             human_proteins.append(proteinname)
        elif 'ESCHERICHIA COLI.' == organism: 
