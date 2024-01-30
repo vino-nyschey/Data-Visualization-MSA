@@ -28,12 +28,12 @@ def categorization(selected_species):
         proteinname = str(proteinname)
         if 'LIPASE' in proteinname.upper(): 
             general_name.append('Lipase')
+        elif 'KINASE' in proteinname.upper(): 
+            general_name.append('Kinase')
         elif 'PHOSPHATASE' in proteinname.upper(): 
             general_name.append('Phosphatase')
         elif 'TRANSFERASE' in proteinname.upper(): 
             general_name.append('Transferase')
-        elif 'KINASE' in proteinname.upper(): 
-            general_name.append('Kinase')
         elif 'ESTERASE' in proteinname.upper(): 
             general_name.append('Esterase')
         elif 'HYDROLASE' in proteinname.upper(): 
@@ -162,7 +162,7 @@ def create_bar_chart(selected_species=None):
             y=1.2,
             active=0,
             buttons=list([
-                dict(label="all Organisms",
+                dict(label="all organisms",
                      method="update",
                      args=[{"visible": [True, True, True]}]),
                 dict(label="other proteins",
