@@ -19,7 +19,7 @@ def categorization(selected_species):
          data = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
 
     proteinnames = data['Protein Name']
-    organisms = data['Organism']
+    organisms = data['Species Name']
     general_name = [] #grouped names of proteins
     other_names = [] #protein names part of category other
 
@@ -28,12 +28,12 @@ def categorization(selected_species):
         proteinname = str(proteinname)
         if 'LIPASE' in proteinname.upper(): 
             general_name.append('Lipase')
+        elif 'KINASE' in proteinname.upper(): 
+            general_name.append('Kinase')
         elif 'PHOSPHATASE' in proteinname.upper(): 
             general_name.append('Phosphatase')
         elif 'TRANSFERASE' in proteinname.upper(): 
             general_name.append('Transferase')
-        elif 'KINASE' in proteinname.upper(): 
-            general_name.append('Kinase')
         elif 'ESTERASE' in proteinname.upper(): 
             general_name.append('Esterase')
         elif 'HYDROLASE' in proteinname.upper(): 
@@ -57,9 +57,10 @@ def divideByOrganism(general_name, organisms):
 
      #divide proteins according to organism
     for proteinname, organism in zip(general_name, organisms):
+       print(organism)
        if 'HOMO SAPIENS' == organism:
             human_proteins.append(proteinname)
-       elif 'ESCHERICHIA COLI' == organism: 
+       elif 'ESCHERICHIA COLI.' == organism: 
            coli_proteins.append(proteinname)
        else: 
            rest_proteins.append(proteinname)
@@ -161,7 +162,7 @@ def create_bar_chart(selected_species=None):
             y=1.2,
             active=0,
             buttons=list([
-                dict(label="all Organisms",
+                dict(label="all organisms",
                      method="update",
                      args=[{"visible": [True, True, True]}]),
                 dict(label="other proteins",
