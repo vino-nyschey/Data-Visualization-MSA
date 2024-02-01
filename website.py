@@ -44,6 +44,7 @@ def chart():
         bubble_chart = plot_bubble_chart(df, selected_species)
         pie_chart = plot_pie_chart(df, selected_species)
         proteinname_plot = create_bar_chart(selected_species)
+        organism_plot = create_pie_chart(selected_species)
         data = df[df['Species Name'].isin(selected_species)].to_dict(orient='records')
     else:
         # Initial load without species selection
@@ -51,8 +52,7 @@ def chart():
         pie_chart = plot_pie_chart(df)
         data = df.to_dict(orient='records')
         proteinname_plot = create_bar_chart()
-    
-    organism_plot = create_pie_chart()
+        organism_plot = create_pie_chart()
     
     # Save the charts as HTML
     bubble_chart_html = bubble_chart.to_html(full_html=False, include_plotlyjs='cdn')
