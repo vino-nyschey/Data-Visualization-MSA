@@ -27,9 +27,24 @@
     <label><input type="checkbox" id="select-all" onclick="selectAll()"> Select All</label>
     {% for species in species %}
         <input type="checkbox" name="species" value="{{ species }}" id="{{ species }}" {% if species in request.form.getlist('species') %}checked{% endif %} >
-        <label for="{{ species }}">{{ species }}</label>
+        <label for="{{ species }}" class="capitalize">{{ species | capitalize }}</label>
     {% endfor %}
     <button type="submit">Refresh Plot</button>
+
+    <script>
+        //capitalize the first letter of each word
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('.capitalize');
+
+            buttons.forEach(function (button) {
+                var words = button.textContent.split(' ');
+                for (var i = 0; i < words.length; i++) {
+                    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase();
+                }
+                labuttonbel.textContent = words.join(' ');
+            });
+        });
+    </script>
 </form>
 
 <!-- Display selected species -->
