@@ -10,7 +10,7 @@ def speciesIntoOrganism(selected_species):
         if sp.lower() == "bacillus sp.": 
             highlighted_species.append("Bacillus subtilis")
         elif sp.lower() == "other sp.": 
-            highlighted_species.append("Other Organisms")
+            highlighted_species.append("Other Species")
             highlighted_species.append("Bos taurus")
             highlighted_species.append("Rattus norvegicus")
             highlighted_species.append("Saccharomyces cerevisiae")
@@ -22,7 +22,7 @@ def speciesIntoOrganism(selected_species):
             highlighted_species.append(sp)
     return highlighted_species
         
-def create_pie_chart(selected_species=None, highlight=0.2):
+def create_pie_chart(selected_species, highlight=0.2):
     # data for the pie chart
     root_folder = Path(__file__).parents[1]
     my_path = root_folder / "Database/fetched_data.csv"
@@ -51,7 +51,7 @@ def create_pie_chart(selected_species=None, highlight=0.2):
     count_chart.append(total_other)
     
     # highlight selected species
-    if selected_species is not None: 
+    if selected_species: 
         highlighted_species = speciesIntoOrganism(selected_species)
         pull_values = [highlight if any(sp.lower() in element.lower() for sp in highlighted_species) else 0 for element in labels_chart]
         if all(e == 0.2 for e in pull_values): 

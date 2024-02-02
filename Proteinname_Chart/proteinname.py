@@ -118,7 +118,7 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
    
     return count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human
 
-def create_bar_chart(selected_species=None):
+def create_bar_chart(selected_species):
     general_name, count_others, organisms = categorization(selected_species)
     human_proteins, coli_proteins, rest_proteins = divideByOrganism(general_name, organisms)
     count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human = labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others)
