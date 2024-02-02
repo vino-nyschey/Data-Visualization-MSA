@@ -4,7 +4,7 @@ from dash.dash_table import DataTable
 import json
 
 # Load protein data from the JSON file
-with open('Data-Visualization-MSA//Database//ProteinDatabase.json', 'r') as file:
+with open('ProteinDatabase.json', 'r') as file:
     protein_data = json.load(file)
 
 app = dash.Dash(__name__)
