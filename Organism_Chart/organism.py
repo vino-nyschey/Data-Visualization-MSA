@@ -26,7 +26,6 @@ def create_pie_chart(selected_species=None, highlight=0.2):
     # data for the pie chart
     root_folder = Path(__file__).parents[1]
     my_path = root_folder / "Database/fetched_data.csv"
-    print(selected_species)
     data =  pd.read_csv(my_path)
     data_filtered = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
     organisms = data_filtered['Organism']
@@ -41,7 +40,6 @@ def create_pie_chart(selected_species=None, highlight=0.2):
     threshold = 0.02 # threshold to group organisms with less percentage than this threshold
 
     for organism, number in count_organism.items():
-        print(count_organism)
         if number > threshold * total_count: 
             labels_chart.append(f"{organism.capitalize()} ({number})")
             count_chart.append(number)
