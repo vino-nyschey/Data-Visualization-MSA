@@ -65,19 +65,42 @@
     {{ bubble_chart_html | safe }}
 </div>
 
-<!-- Plotly pie chart container -->
-<div class="pie-charts-container">
-    <!-- first container -->
-    <div id="pie-chart">
-        {{ pie_chart_html | safe }}
+<div style="display: flex; justify-content: space-between;">
+    <!-- Left pie chart -->
+    <div style="margin-right: 10px;">
+        <div style="text-align: left;">
+            <h4>Protein Family Name</h4>
+            <p>The protein family names are represented in this this pie chart. The colors correspond to the colors of the bubble chart.
+                More information about the category 'Other' is shown in the Protein Family Name bar chart below. 
+            </p>
+        </div>
+        <div class="pie-charts-container">
+            <!-- first container -->
+            <div id="pie-chart">
+                {{ pie_chart_html | safe }}
+            </div>
+        </div>
     </div>
-    <!-- second container -->
-    <div id="pie_chart"></div>
-    <script>
-        var chart_data = {{ chart_data_org | safe }};
-        console.log(chart_data);  // Add this line for debugging
-        Plotly.newPlot('pie_chart', chart_data.data, chart_data.layout);
-    </script>
+
+    <!-- Right pie chart-->
+    <div style="margin-left: 10px;"></divstyle>
+        <div style="text-align: left;">
+            <h4>Protein Species Name</h4>
+            <p>This pie chart visualizes different species name of the proteins. 
+                By hovering you get exact probabilities for the proportion of this species in relation to all 89 proteins.
+                More information about the category 'Other Species' is also included in the hovertext.  
+            </p>
+        </div>
+        <div class="pie-charts-container">
+            <!-- second container -->
+            <div id="pie_chart"></div>
+            <script>
+                var chart_data = {{ chart_data_org | safe }};
+                console.log(chart_data);  // Add this line for debugging
+                Plotly.newPlot('pie_chart', chart_data.data, chart_data.layout);
+            </script>
+        </div>
+    </div>
 </div>
 
 <!-- Plotly bar chart container -->

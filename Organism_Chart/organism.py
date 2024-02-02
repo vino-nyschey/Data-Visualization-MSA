@@ -47,7 +47,7 @@ def create_pie_chart(selected_species=None, highlight=0.2):
             total_other = total_other + number   
             organisms_other.append(organism.capitalize())
             count_other.append(number)
-    labels_chart.append(f"{'Other Organisms'} ({total_other})")
+    labels_chart.append(f"{'Other Species'} ({total_other})")
     count_chart.append(total_other)
     
     # highlight selected species
@@ -62,8 +62,8 @@ def create_pie_chart(selected_species=None, highlight=0.2):
     # create hovertext
     hovertext = []
     for organism, number in zip(labels_chart, count_chart):
-        if "Other Organisms" in organism:
-            hovertext.append(f"Other Organisms:<br>" + "<br>".join([f"{org}: {count/total_count:.2%}" for org, count in zip(organisms_other, count_other)]))
+        if "Other Species" in organism:
+            hovertext.append(f"Other Species:<br>" + "<br>".join([f"{org}: {count/total_count:.2%}" for org, count in zip(organisms_other, count_other)]))
         else:
             hovertext.append(f"{organism}<br> {number/total_count:.2%}")
 
