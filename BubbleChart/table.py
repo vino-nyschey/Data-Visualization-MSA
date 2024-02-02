@@ -5,7 +5,7 @@ from flask import Flask, render_template, jsonify, request
 app = Flask(__name__)
 
 # Load protein data
-json_file_path = "Data-Visualization-MSA//Database//ProteinDatabase.json"
+json_file_path = "ProteinDatabase.json"
 
 if os.path.exists(json_file_path):
     with open(os.path.abspath(json_file_path), 'r') as json_file:
