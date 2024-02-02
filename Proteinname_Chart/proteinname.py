@@ -131,7 +131,7 @@ def create_bar_chart(selected_species=None):
             x=count_chart,
             y=labels_chart,
             orientation='h',
-            name='other proteins',
+            name='Other Proteins',
             marker_color = '#EF553B',
             hoverinfo='text',
             hovertext=hovertext))
@@ -140,7 +140,7 @@ def create_bar_chart(selected_species=None):
             x=count_chart_human,
             y=labels_chart_human,
             orientation='h',
-            name='Homo Sapiens proteins',
+            name='Homo Sapiens Proteins',
             marker_color = "#636EFA",
             hoverinfo='text',
             hovertext=hovertext_human))
@@ -149,33 +149,36 @@ def create_bar_chart(selected_species=None):
             x=count_chart_coli,
             y=labels_chart_coli,
             orientation='h',
-            name='E.coli proteins',
+            name='E.coli Proteins',
             marker_color = '#00CC96',
             hoverinfo='text',
             hovertext=hovertext_coli))
     
     fig.update_layout(
-    updatemenus=[
-        dict(
-            x=0, 
-            y=1.2,
-            active=0,
-            buttons=list([
-                dict(label="all organisms",
-                     method="update",
-                     args=[{"visible": [True, True, True]}]),
-                dict(label="other proteins",
-                     method="update",
-                     args=[{"visible": [True, False, False]}]),
-                dict(label="Homo Sapiens proteins",
-                     method="update",
-                     args=[{"visible": [False, True, False]}]),
-                dict(label="E.coli proteins",
-                     method="update",
-                     args=[{"visible": [False, False, True]}]),
-            ]),
-        )
-    ], xaxis_range=[0,25], barmode='stack')
+        xaxis_title="Number of Proteins",  # X-axis label
+        yaxis_title="Protein Family",  # Y-axis label
+        updatemenus=[
+            dict(
+                x=0, 
+                y=1.2,
+                active=0,
+                    buttons=list([
+                        dict(label="All Species",
+                            method="update",
+                            args=[{"visible": [True, True, True]}]),
+                        dict(label="Other Proteins",
+                            method="update",
+                            args=[{"visible": [True, False, False]}]),
+                        dict(label="Homo Sapiens Proteins",
+                            method="update",
+                            args=[{"visible": [False, True, False]}]),
+                        dict(label="E.coli Proteins",
+                            method="update",
+                            args=[{"visible": [False, False, True]}]),
+                    ]),
+             )
+         ], xaxis_range=[0,25], barmode='stack'
+    )
 
     chart_data = pio.to_json(fig)
 

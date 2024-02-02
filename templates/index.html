@@ -21,8 +21,10 @@
 <body>
 
 <h2>Protein Data Visualization</h2>
-<p>Here are several visualizations showing different aspects of proteins. It is possible to select specific organisms using the following buttons. 
-    This means that only these proteins are shown in the plots.</p>
+<p> 
+    Here are several visualizations showing different aspects of proteins. It is possible to select specific organisms using the following buttons. 
+    This means that only these proteins are shown in the plots. 
+</p>
 
 <!-- Form for species selection -->
 <form method="post" action="/species" style="text-align: center;">
@@ -57,8 +59,10 @@
 </div>
 
 <h4>Protein Discovered Years</h4>
-<p>The Bubble Chart shows all proteins sequences and their respective discovered year. The size correpsonds to the number of chains of these proteins. 
-    The colours show the different protein families, where each protein belongs to. </p>
+<p>
+    The Bubble Chart shows all proteins sequences and their respective discovered year. The size correpsonds to the number of chains of these proteins. 
+    The colours show the different protein families, where each protein belongs to.
+</p>
 
 <!-- Plotly bubble chart container -->
 <div id="bubble-chart">
@@ -70,7 +74,8 @@
     <div style="margin-right: 10px;">
         <div style="text-align: left;">
             <h4>Protein Family Name</h4>
-            <p>The protein family names are represented in this this pie chart. The colors correspond to the colors of the bubble chart.
+            <p>
+                The protein family names are represented in this this pie chart. The colors correspond to the colors of the bubble chart.
                 More information about the category 'Other' is shown in the Protein Family Name bar chart below. 
             </p>
         </div>
@@ -86,7 +91,8 @@
     <div style="margin-left: 10px;"></divstyle>
         <div style="text-align: left;">
             <h4>Protein Species Name</h4>
-            <p>This pie chart visualizes different species name of the proteins. 
+            <p>
+                This pie chart visualizes different species name of the proteins. 
                 By hovering you get exact probabilities for the proportion of this species in relation to all 89 proteins.
                 More information about the category 'Other Species' is also included in the hovertext.  
             </p>
@@ -102,6 +108,12 @@
         </div>
     </div>
 </div>
+
+<h4>Protein Family Name</h4>
+<p> 
+    This bar chart shows the protein families with their associated number of proteins. 
+    Independent of the other charts, you can select different species and only display them in the plot.
+</p>
 
 <!-- Plotly bar chart container -->
 <div id="bar_chart"></div>
