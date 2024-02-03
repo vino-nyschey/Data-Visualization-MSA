@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSA Visualization</title>
+    <style>
+        /* Table styles */
+        .table-container {
+            overflow-x: auto; /* Enable horizontal scrolling */
+            position: relative; /* Required for fixing elements */
+        }
+        
+        .fixed-header, .fixed-seqid {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: #fff; /* Background color for fixed elements */
+        }
+
+        .fixed-footer {
+            position: sticky;
+            bottom: 0;
+            z-index: 1;
+            background-color: #f2f2f2; /* Background color for fixed footer */
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 2px auto;
+            font-size: smaller;
+            width: 100%;
+            height: 80%;
+        }
+
+        th, td {
+            padding: 2px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            border: 0px solid #ddd;
+        }
+
+        th:first-child, td:first-child {
+            width: 10px; /* Width of the Sequence ID column */
+        }
+
+        /* Footer row styles */
+        tr:last-child {
+            background-color: #f2f2f2; /* Background color for footer rows */
+        }
+
+        /* Tooltip styles */
+        td[title] {
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="color-buttons">
+        <button id="clustal-button">Clustal</button>
+        <button id="lesk-button">Lesk</button>
+        <button id="custom-button">Custom</button>
+    </div>
+
+    <div id="matrix-plot-container"></div>
+
+    <script>
+        // Fetch data from Flask backend
+        const sequences = {{ sequences | tojson }};
+        const sequenceDetails = {{ sequence_details | tojson }};
+        const coveragePercentages = {{ coverage_percentages | tojson }};
+        const consensusPercentages = {{ consensus_percentages | tojson }};
+    
+        // Define color patterns for Clustal, Lesk, and Custom
+        const colorPatterns = {
+            Clustal: {
+                G: '#FFA500', P: '#FFA500', S: '#FFA500', T: '#FFA500',
+                H: '#FF0000', K: '#FF0000', R: '#FF0000',
+                F: '#0000FF', W: '#0000FF', Y: '#0000FF',
+                I: '#008000', L: '#008000', M: '#008000', V: '#008000'
+            },
+            Lesk: {
+                G: '#FFA500', A: '#FFA500', S: '#FFA500', T: '#FFA500',
+                C: '#008000', V: '#008000', I: '#008000', L: '#008000', P: '#008000', F: '#008000', Y: '#008000', M: '#008000', W: '#008000',
+                N: '#FF00FF', Q: '#FF00FF', H: '#FF00FF',
+                D: '#FF0000', E: '#FF0000',
+                K: '#0000FF', R: '#0000FF'
+            },
+            Custom: {
+                R: '#E60606', K: '#C64200', Q: '#FF6600', N: '#FF9900',
+                E: '#FFCC00', D: '#FFCC99', H: '#FFFF99', P: '#FFFF00',
+                Y: '#CCFFCC', W: '#CC99FF', S: '#CCFF99', T: '#00FF99',
+                G: '#00FF00', A: '#CCFFFF', M: '#99CCFF', C: '#00FFFF',
+                F: '#00CCFF', L: '#3366FF', V: '#0000FF', I: '#000080'
+            }
+        };
+    
+        // Function to generate the matrix plot
+        function generateMatrixPlot(colorScale) {
+            const matrixPlotContainer = document.getElementById('matrix-plot-container');
+            matrixPlotContainer.innerHTML = ''; // Clear previous content
+    
+            const table = document.createElement('table');
+    
+            // Create the header row with position numbers
+            const headerRow = document.createElement('tr');
+            headerRow.innerHTML = `<th>Seq ID</th>${Array.from({ length: sequences[0][1].length }, (_, i) => `<th>${i + 1}</th>`).join('')}`;
+            table.appendChild(headerRow);
+    
+            // Create rows for each sequence
+            sequences.forEach(([sequenceId, sequence], rowIndex) => {
+                const row = document.createElement('tr');
+            // Handling the Hover  
+                row.innerHTML = `<td title=" 
+    Organism      : ${sequenceDetails[sequenceId].Organism}
+    Protein Name  : ${sequenceDetails[sequenceId]['Protein Name']}
+    Engineered    : ${sequenceDetails[sequenceId].Engineered}
+    Seq Length    : ${sequenceDetails[sequenceId]['Sequence Length']}
+    No. of Chains : ${sequenceDetails[sequenceId]['No. of Chains']}
+    ">${sequenceId}</td>`;
+
+                sequence.split('').forEach((aa, colIndex) => {
+                    const cell = document.createElement('td');
+                    const backgroundColor = getColor(colorScale, aa);
+                    cell.style.backgroundColor = backgroundColor;
+                    cell.textContent = aa;
+                    cell.style.color = getContrastColor(backgroundColor); // Set text color based on background color
+                    row.appendChild(cell);
+                });
+                table.appendChild(row);
+            });
+    
+            // Create footer row for coverage percentages
+            const coverageFooterRow = document.createElement('tr');
+            coverageFooterRow.innerHTML = `<td>Coverage (%)</td>${coveragePercentages.map(coverage => `<td>${coverage.toFixed(2)}</td>`).join('')}`;
+            table.appendChild(coverageFooterRow);
+    
+            // Create footer row for consensus percentages
+            const consensusFooterRow = document.createElement('tr');
+            consensusFooterRow.innerHTML = `<td>Consensus (%)</td>${consensusPercentages.map(consensus => `<td>${consensus.toFixed(2)}</td>`).join('')}`;
+            table.appendChild(consensusFooterRow);
+    
+            matrixPlotContainer.appendChild(table);
+        }
+    
+        // Function to get color based on color scale
+        function getColor(colorScale, aa) {
+            if (colorScale === 'Clustal') {
+                return colorPatterns.Clustal[aa] || '#FFFFFF'; // Default color: White
+            } else if (colorScale === 'Lesk') {
+                return colorPatterns.Lesk[aa] || '#FFFFFF'; // Default color: White
+            } else if (colorScale === 'Custom') {
+                return colorPatterns.Custom[aa] || '#FFFFFF'; // Default color: White
+            } else {
+                return '#FFFFFF'; // Default color: White
+            }
+        }
+    
+        // Function to get contrast color based on background color brightness
+        function getContrastColor(backgroundColor) {
+            // Convert hexadecimal color to RGB
+            const r = parseInt(backgroundColor.substr(1, 2), 16);
+            const g = parseInt(backgroundColor.substr(3, 2), 16);
+            const b = parseInt(backgroundColor.substr(5, 2), 16);
+            // Calculate brightness using luminance formula
+            const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+            // Return white for dark background, black for light background
+            return brightness > 0.5 ? '#000000' : '#FFFFFF';
+        }
+    
+        // Event listeners for color scale buttons
+        document.getElementById('clustal-button').addEventListener('click', function() {
+            generateMatrixPlot('Clustal');
+        });
+    
+        document.getElementById('lesk-button').addEventListener('click', function() {
+            generateMatrixPlot('Lesk');
+        });
+    
+        document.getElementById('custom-button').addEventListener('click', function() {
+            generateMatrixPlot('Custom');
+        });
+    
+        // Initial plot generation with default color scale (Clustal)
+        generateMatrixPlot('Clustal');
+    </script>
+    
+</body>
+</html>
