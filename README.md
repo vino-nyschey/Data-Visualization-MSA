@@ -20,3 +20,7 @@ The dataset, in form of a fasta file, used for this project is available on Ilia
 3. run python3 website.py or python website.py (is it different when not on Mac?)
 
 ### Results 
+```
+cd name
+```
+
