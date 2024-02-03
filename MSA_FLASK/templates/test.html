@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSA Visualization</title>
+    <style>
+        /* Fixed header styles */
+        .header-container {
+            position: fixed; /* Fix the header container */
+            top: 0; /* Stick to the top */
+            left: 0; /* Stick to the left */
+            width: 100%; /* Take full width of the viewport */
+            background-color: white; /* White background */
+            z-index: 2; /* Ensure it appears above the table */
+        }
+        .header-row {
+            width: 100%; /* Take full width of the container */
+        }
+        h1 {
+            margin-top: 0; /* Remove default margin */
+        }
+        
+        /* Table styles */
+        table {
+            border-collapse: collapse;
+            margin-top: 30px; /* Add space below the header */
+        }
+        th, td {
+            padding: 5px;
+            font-family: monospace;
+            border: none; /* Remove borders between cells */
+        }
+        th:first-child,
+        td:first-child {
+            width: 150px; /* Set fixed width for the Sequence ID column */
+            position: sticky; /* Make the Sequence ID column sticky */
+            left: 0; /* Stick to the left */
+            background-color: white; /* White background */
+            z-index: 1; /* Ensure it appears above the table */
+            white-space: nowrap; /* Prevent wrapping in Sequence ID cells */
+            overflow: hidden; /* Hide overflow content */
+            text-overflow: ellipsis; /* Show ellipsis for overflow content */
+        }
+        .alignment-container {
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+        .alignment-column {
+            width: fit-content; /* Ensure alignment column does not extend beyond its content */
+        }
+        .alignment-column .scrollable {
+            white-space: nowrap; /* Prevent alignment sequence from wrapping */
+        }
+        .details {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+        .sequence-id:hover .details {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Multiple Sequence Alignment Visualization</h1>
+        <table>
+            <tr class="header-row">
+                <th>Sequence ID</th>
+                <th class="alignment-container">
+                    <div class="alignment-column">
+                        Alignment
+                        <div class="scrollable">
+                            <span style="font-family: monospace;">
+                                {% for position in positions %}
+                                    {{ position }}
+                                {% endfor %}
+                            </span>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div style="margin-top: 80px;"> <!-- Add space to accommodate fixed header -->
+        <table>
+            {% for sequence_id, sequence in sequences %}
+            <tr>
+                <td class="sequence-id" title="{{ sequence_details[sequence_id].Organism }}<br>{{ sequence_details[sequence_id]['Protein Name'] }}">
+                    {{ sequence_id }}
+                    <div class="details">
+                        <strong>Details</strong><br>
+                        Organism: {{ sequence_details[sequence_id].Organism }}<br>
+                        Protein Name: {{ sequence_details[sequence_id]['Protein Name'] }}<br>
+                        Engineered: {{ sequence_details[sequence_id].Engineered }}<br>
+                        Sequence Length: {{ sequence_details[sequence_id]['Sequence Length'] }}
+                    </div>
+                </td>
+                <td class="alignment-column">
+                    <div class="scrollable">
+                        <span style="font-family: monospace;">
+                            {% for aa, color in sequence %}
+                                <span style="color: {{ color }}">{{ aa }}</span>
+                            {% endfor %}
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
