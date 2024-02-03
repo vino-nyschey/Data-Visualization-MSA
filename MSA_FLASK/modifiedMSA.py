@@ -72,7 +72,7 @@ def calculate_coverage_consensus(sequences):
 
 @app.route('/')
 def index():
-    files = [f for f in os.listdir('fasta_files/MSA_align_files') if f.endswith('.fasta')]
+    files = [f for f in os.listdir('./MSA_FLASK/fasta_files/MSA_align_files') if f.endswith('.fasta')]
     return render_template('load.html', files=files)
 
 @app.route('/visualize', methods=['POST'])
@@ -81,7 +81,7 @@ def visualize():
     if not selected_file:
         return "No file selected.", 400
     
-    fasta_path = os.path.join('fasta_files/MSA_align_files', selected_file)
+    fasta_path = os.path.join('./MSA_FLASK/fasta_files/MSA_align_files', selected_file)
     if not os.path.exists(fasta_path):
         return "Selected file not found.", 404
     
@@ -89,7 +89,7 @@ def visualize():
     if not sequences:
         return "No sequences found in the file.", 404
     
-    sequence_details = get_sequence_details_from_json("ProteinDatabase.json")
+    sequence_details = get_sequence_details_from_json("./Database/ProteinDatabase.json")
     if not sequence_details:
         return "Error loading sequence details.", 500
     
