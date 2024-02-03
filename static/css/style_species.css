@@ -48,7 +48,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: right; /* Float the button to the right */
+    float: right; 
 }
 
 button:hover {
@@ -79,8 +79,8 @@ button:hover {
     border-radius: 8px;
     overflow: hidden;
     padding: 0 5px;
-    margin-bottom: 20px; /* Added margin to the bottom */
-    height: 620px;
+    margin-bottom: 10px; 
+    height: 660px;
 }
 
 .chart-title {
