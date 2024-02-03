@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 import os
 import json
 import pandas as pd
@@ -9,13 +9,31 @@ from Proteinname_Chart.proteinname import create_bar_chart
   
 app = Flask(__name__, static_url_path='/static')
 
+
+# Load protein data
+json_file_path = "./Database/ProteinDatabase.json"
+
+if os.path.exists(json_file_path):
+    with open(os.path.abspath(json_file_path), 'r') as json_file:
+        protein_data = json.load(json_file)
+        
+else:
+    protein_data = []
+    
+
 @app.route('/')
 def index():
-    return redirect(url_for('base'))
+    return render_template('base.html', data=protein_data)  # Pass protein_data to template
 
-@app.route('/base')
-def base():
-    return render_template('base.html')
+@app.route('/get_protein_details', methods=['POST'])
+def get_protein_details():
+    sequence_id = request.json['sequence_id']
+    selected_protein = next((protein for protein in protein_data if protein['Sequence ID'] == sequence_id), None)
+    if selected_protein:
+        return jsonify(selected_protein)
+    else:
+        return jsonify({})
+
 
 @app.route('/species', methods=['GET', 'POST'])
 def chart():
