@@ -41,7 +41,6 @@ def chart():
     # Inside the Flask route
     if request.method == 'POST' and 'update_plots' in request.form:
         selected_species = request.form.getlist('species') if request.form.getlist('species') else unique_species
-        print(selected_species)
         bubble_chart = plot_bubble_chart(df, selected_species)
         pie_chart = plot_pie_chart(df, selected_species)
         proteinname_plot = create_bar_chart(selected_species)
