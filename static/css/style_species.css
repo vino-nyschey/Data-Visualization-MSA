@@ -1,41 +1,100 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 17px; 
+    background-color: #fffdfd;
 }
 
+h1 {
+    text-align: center;
+    font-size: 50px;
+    margin: 70px 0; /* Adjusted margin */
+}
+
+p {
+    text-align: center; 
+    margin: 20px 0; /* Adjusted margin */
+}
+
+/* Styling for the species selection form */
 form {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    align-self: center;
+    text-align: left;
+    margin: 90px auto;
+    max-width: 850px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
+    grid-template-rows: repeat(4, auto); /* 4 rows with automatic height */
+    grid-gap: 5px 10px; /* Adjust the gap between grid items */
+    justify-content: space-evenly; /* Zentriert die Elemente horizontal */
+    align-items: center; /* Zentriert die Elemente vertikal */
 }
 
-input[type="checkbox"] {
-    margin-right: 5px;
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#select-all-label {
+    order: 1;
+    grid-column: span 3; /* Make the "Select All" label span all 3 columns */
 }
 
 button {
+    order: 2;
     background-color: #4CAF50;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
+    float: right; 
 }
 
 button:hover {
     background-color: #45a049;
 }
 
-#bubble-chart,
-#bar-chart {
-    margin-top: 20px;
+/* Chart styling */
+.chart-container {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 20px;
+    float: left;
+    overflow: hidden;
+    height: 700px;
 }
 
-.pie-charts-container {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Distribute space evenly between pie charts */
-    margin-top: 20px; /* Add some top margin for spacing */
+.full-width-chart-container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
-.pie-chart {
-    width: 48%; /* Set the width of each pie chart container */
+.chart-card {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 0 5px;
+    margin-bottom: 10px; 
+    height: 660px;
+}
+
+.chart-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.chart-text {
+    text-align: left;
+    margin: 0 45px 20px 45px;
+}
+
+.non-chart-text  {
+    font-size: 22px;
+    text-align: left;
+    margin: 100px 100px 100px 100px;
 }

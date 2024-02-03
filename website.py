@@ -33,26 +33,26 @@ def chart():
     df = pd.json_normalize(json_data)
 
     # Get unique species names for checkbox buttons
-    unique_species = df['Species Name'].unique()
+    unique_species = sorted(df['Species Name'].unique())
 
     # Initialize selected_species outside of the if-else block
-    selected_species = None
+    selected_species = {}
 
     # Inside the Flask route
-    if request.method == 'POST':
-        selected_species = request.form.getlist('species')
+    if request.method == 'POST' and 'update_plots' in request.form:
+        selected_species = request.form.getlist('species') if request.form.getlist('species') else unique_species
         bubble_chart = plot_bubble_chart(df, selected_species)
         pie_chart = plot_pie_chart(df, selected_species)
         proteinname_plot = create_bar_chart(selected_species)
         organism_plot = create_pie_chart(selected_species)
         data = df[df['Species Name'].isin(selected_species)].to_dict(orient='records')
     else:
-        # Initial load without species selection
-        bubble_chart = plot_bubble_chart(df)
-        pie_chart = plot_pie_chart(df)
+        selected_species = unique_species
+        bubble_chart = plot_bubble_chart(df, selected_species)
+        pie_chart = plot_pie_chart(df, selected_species)
         data = df.to_dict(orient='records')
-        proteinname_plot = create_bar_chart()
-        organism_plot = create_pie_chart()
+        proteinname_plot = create_bar_chart(selected_species)
+        organism_plot = create_pie_chart(selected_species)
     
     # Save the charts as HTML
     bubble_chart_html = bubble_chart.to_html(full_html=False, include_plotlyjs='cdn')

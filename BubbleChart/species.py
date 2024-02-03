@@ -2,30 +2,42 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-def plot_bubble_chart(data, selected_species=None):
+def plot_bubble_chart(data, selected_species):
     # Convert 'Discovered Year' to integer
     data['Discovered Year'] = pd.to_numeric(data['Discovered Year'], errors='coerce')
-    data = data[data['Sequence ID'].str.split(':').str[1] != 'P'] # delete sequence with chain P
-    data = data[data['Sequence ID'].str.split(':').str[1] != 'Q'] # delete sequence with chain Q
+    data = data[data['Sequence ID'].str.split(':').str[1] != 'P']  # delete sequence with chain P
+    data = data[data['Sequence ID'].str.split(':').str[1] != 'Q']  # delete sequence with chain Q
 
     # Filter data based on selected species
-    if selected_species:
-        data = data[data['Species Name'].isin(selected_species)]
-    
+    data = data[data['Species Name'].isin(selected_species)]
     # color map
     unique_proteins = data['Protein Family'].unique()
     color_map = {protein: px.colors.qualitative.Plotly[i % 10] for i, protein in enumerate(unique_proteins)}
+        
 
-    # Create a bubble chart with Sequence ID on the x-axis
-    fig = px.scatter(data, x='Sequence ID', y='Discovered Year', 
+    # Erstelle ein Bubble-Chart mit Sequence ID auf der x-Achse
+    fig = px.scatter(data, x='Sequence ID', y='Discovered Year',
                      color='Protein Family',  # Differentiate by Protein Family
                      color_discrete_map=color_map,
                      size='No. of Chains',
                      opacity=0.7,  # Set default opacity
                      labels={'x': 'Sequence ID', 'y': 'Discovered Year'},
-                     title='Protein Discovered Years',
-                     template='plotly', height=500,
-                     hover_name='Protein Name')  # Specify the hover information here
+                     template='plotly', 
+                     height=500,
+                     hover_name='Protein Name'  # Specify the hover information here
+                     )
+
+    # capitalize legend labels
+    fig.for_each_trace(lambda l: l.update(name=l.name.capitalize()))
+
+    # create hovertext
+    fig.update_traces(hovertemplate='<b>%{hovertext}</b>'
+                                    '<br><br>Protein Family: ' + data['Protein Family'].apply(
+                    lambda x: str(x).capitalize() if pd.notna(x) else '').tolist()[0] +
+                                    '<br>Sequence ID: %{x}'
+                                    '<br>Discovered Year: %{y}'
+                                    '<br>No. of Chains: %{marker.size}'
+                                    '<extra></extra>')
 
     # Sort x-axis (Sequence ID) in ascending order
     fig.update_xaxes(categoryorder='array')
@@ -35,7 +47,7 @@ def plot_bubble_chart(data, selected_species=None):
 
     return fig
 
-def plot_pie_chart(data, selected_species=None):
+def plot_pie_chart(data, selected_species):
     # Filter data based on selected species
     if selected_species:
         data = data[data['Species Name'].isin(selected_species)]

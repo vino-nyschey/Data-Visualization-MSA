@@ -5,67 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_species.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='protein.ico') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Lato:wght@400&family=Open+Sans:wght@400&family=Montserrat:wght@400&display=swap">
     <title>Protein Data Visualization</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Protein Data Visualization</h1>
+    <div class="non-chart-text">
+        <p> 
+            Here are several visualizations showing different aspects of proteins. It is possible to select specific organisms using the following buttons. 
+            This means that only these proteins are shown in the plots. 
+        </p>
+    </div>
+
+    <!-- Form for species selection -->
+    <form method="post" action="/species">
+        {% for species in species %}
+            <label><input type="checkbox" name="species" value="{{ species }}" {% if not request.form.getlist('species') or species in request.form.getlist('species') %}checked{% endif %}>
+                {{ species | capitalize }}
+            </label>
+        {% endfor %}
+        <label id="select-all-label"><input type="checkbox" id="select-all" {% if not request.form.getlist('species') %}checked{% endif %} onclick="selectAll()"> Select All</label>
+        <button name="update_plots" type="submit">Update Plots</button>
+    </form>
+
+    <!-- Plotly bubble chart container -->
+    <div class="full-width-chart-container">
+        <div class="chart-card">
+            <div class="chart-title">
+                <h3>Protein Discovered Years</h3>
+            </div>
+            <div class="chart-text">
+                <p>
+                    The Bubble Chart shows all protein sequences and their respective discovered year. The size corresponds to the number of chains of these proteins.</br>
+                    The colors show the different protein families, where each protein belongs to.
+                </p>
+            </div>
+            <div id="bubble-chart">
+                {{ bubble_chart_html | safe }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Left Chart -->
+    <div class="chart-container">
+        <div class="chart-card">
+            <div class="chart-title">
+                <h3>Protein Family Name</h3>
+            </div>
+            <div class="chart-text">
+                <p>
+                    The protein family names are represented in this pie chart. The colors correspond to the colors of the bubble chart.
+                    More information about the category 'Other' is shown in the Protein Family Name bar chart below. 
+                </p>
+            </div>
+            <div class="pie-charts-container">
+                <div id="left-chart" style="max-width: 100%;">
+                    {{ pie_chart_html | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Chart -->
+    <div class="chart-container">
+        <div class="chart-card">
+            <div class="chart-title">
+                <h3>Protein Species Name</h3>
+            </div>
+            <div class="chart-text">
+                <p>
+                    This pie chart visualizes different species names of the proteins. By hovering, you get exact probabilities for the proportion of this species in relation to all 89 proteins.
+                    More information about the category 'Other Species' is also included in the hover text.  
+                </p>
+            </div>
+            <div class="pie-charts-container">
+                <div id="right-chart" style="max-width: 100%;"></div>
+                <script>
+                    var chart_data = {{ chart_data_org | safe }};
+                    Plotly.newPlot('right-chart', chart_data.data, chart_data.layout);
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="full-width-chart-container">
+        <div class="chart-card">
+            <div class="chart-title">
+                <h3>Protein Family Name</h3>
+            </div>
+            <div class="chart-text">
+                <p>
+                    This bar chart shows the protein families with their associated number of proteins. 
+                    Independent of the other charts, you can select different species and only display them in the plot.
+                </p>
+            </div>
+            <div id="full-width-chart"></div>
+            <script>
+                var chart_data = {{ chart_data_pro | safe }};
+                Plotly.newPlot('full-width-chart', chart_data.data, chart_data.layout);
+            </script>
+        </div>
+    </div>
+
     <script>
+        // Function to select or deselect all checkboxes
         function selectAll() {
             var checkboxes = document.querySelectorAll('input[name="species"]');
-            var selectAllCheckbox = document.getElementById('select-all');
-    
+            var selectAllCheckbox = document.getElementById('select-all-label');
+
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = selectAllCheckbox.checked;
             });
+            selectAllCheckbox.checked = checkboxes.length > 0 && [...checkboxes].every(checkbox => checkbox.checked);
         }
     </script>
-</head>
-<body>
-
-<h2>Protein Data Visualization</h2>
-
-<!-- Form for species selection -->
-<form method="post" action="/species" style="text-align: center;">
-    <label><input type="checkbox" id="select-all" onclick="selectAll()"> Select All</label>
-    {% for species in species %}
-        <input type="checkbox" name="species" value="{{ species }}" id="{{ species }}" {% if species in request.form.getlist('species') %}checked{% endif %} >
-        <label for="{{ species }}">{{ species }}</label>
-    {% endfor %}
-    <button type="submit">Refresh Plot</button>
-</form>
-
-<!-- Display selected species -->
-<div id="selected-species">
-    {% if selected_species %}
-        <strong>Selected Species:</strong> {{ selected_species | join(', ') }}
-    {% endif %}
-</div>
-
-<!-- Plotly bubble chart container -->
-<div id="bubble-chart">
-    {{ bubble_chart_html | safe }}
-</div>
-
-<!-- Plotly pie chart container -->
-<div class="pie-charts-container">
-    <!-- first container -->
-    <div id="pie-chart">
-        {{ pie_chart_html | safe }}
-    </div>
-    <!-- second container -->
-    <div id="pie_chart"></div>
-    <script>
-        var chart_data = {{ chart_data_org | safe }};
-        console.log(chart_data);  // Add this line for debugging
-        Plotly.newPlot('pie_chart', chart_data.data, chart_data.layout);
-    </script>
-</div>
-
-<!-- Plotly bar chart container -->
-<div id="bar_chart"></div>
-<script>
-    var chart_data = {{ chart_data_pro | safe }};
-    console.log(chart_data);  // Add this line for debugging
-    Plotly.newPlot('bar_chart', chart_data.data, chart_data.layout);
-</script>
-
 </body>
 </html>
