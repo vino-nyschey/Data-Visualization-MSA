@@ -25,4 +25,4 @@ species of the other function (`spciesIntoIrganism`).
 
 ```python
 # Example usage of plot_bubble_chart
-pie_chart_species = create_pie_chart(protein_data, selected_species)
+pie_chart_species = create_pie_chart(selected_species, highlight=0.2)
