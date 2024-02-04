@@ -8,26 +8,26 @@ body {
 h1 {
     text-align: center;
     font-size: 50px;
-    margin: 70px 0; /* Adjusted margin */
+    margin: 70px 0;
 }
 
 p {
     text-align: center; 
-    margin: 20px 0; /* Adjusted margin */
+    margin: 20px 0; 
 }
 
-/* Styling for the species selection form */
+/* Species Selection Form */
 form {
     align-self: center;
     text-align: left;
     margin: 90px auto;
     max-width: 850px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
-    grid-template-rows: repeat(4, auto); /* 4 rows with automatic height */
-    grid-gap: 5px 10px; /* Adjust the gap between grid items */
-    justify-content: space-evenly; /* Zentriert die Elemente horizontal */
-    align-items: center; /* Zentriert die Elemente vertikal */
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(4, auto); 
+    grid-gap: 5px 10px; 
+    justify-content: space-evenly; 
+    align-items: center;
 }
 
 label {
@@ -37,9 +37,10 @@ label {
 
 #select-all-label {
     order: 1;
-    grid-column: span 3; /* Make the "Select All" label span all 3 columns */
+    grid-column: span 3;
 }
 
+/* Buttons to select species and update Plots */
 button {
     order: 2;
     background-color: #4CAF50;
@@ -55,7 +56,7 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Chart styling */
+/* Pie Charts */
 .chart-container {
     box-sizing: border-box;
     width: 50%;
@@ -65,6 +66,7 @@ button:hover {
     height: 700px;
 }
 
+/* Bubble and Bar Chart */
 .full-width-chart-container {
     box-sizing: border-box;
     width: 100%;
