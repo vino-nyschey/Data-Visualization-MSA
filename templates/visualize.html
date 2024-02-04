@@ -40,8 +40,12 @@
             border: 0px solid #ddd;
         }
 
+        /* Make the first column sticky */
         th:first-child, td:first-child {
-            width: 10px; /* Width of the Sequence ID column */
+            position: sticky;
+            left: 0;
+            z-index: 2; /* Higher z-index to be above the table */
+            background-color: #fff; /* Background color for fixed first column */
         }
 
         /* Footer row styles */
@@ -111,14 +115,23 @@
             // Create rows for each sequence
             sequences.forEach(([sequenceId, sequence], rowIndex) => {
                 const row = document.createElement('tr');
+
+            // Make the sequenceId column sticky
+                const seqIdCell = document.createElement('td');
             // Handling the Hover  
-                row.innerHTML = `<td title=" 
+                seqIdCell.innerHTML = `<div title=" 
     Organism      : ${sequenceDetails[sequenceId].Organism}
     Protein Name  : ${sequenceDetails[sequenceId]['Protein Name']}
     Engineered    : ${sequenceDetails[sequenceId].Engineered}
     Seq Length    : ${sequenceDetails[sequenceId]['Sequence Length']}
     No. of Chains : ${sequenceDetails[sequenceId]['No. of Chains']}
-    ">${sequenceId}</td>`;
+    ">${sequenceId}</div>`;
+    seqIdCell.style.position = 'sticky';
+    seqIdCell.style.left = '0';
+    seqIdCell.style.zIndex = '2';
+    seqIdCell.style.backgroundColor = '#fff'; /* Background color for fixed seqId column */
+    
+    row.appendChild(seqIdCell);
 
                 sequence.split('').forEach((aa, colIndex) => {
                     const cell = document.createElement('td');
