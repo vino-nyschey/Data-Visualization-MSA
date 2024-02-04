@@ -19,7 +19,7 @@
     <div class="non-chart-text">
         <p> 
             By visualising the relationships between proteins, the analysis of these proteins is faster, more effective and enables researchers to communicate their findings.
-            We visualised 89 proteins using a pre-provided FASTA-file containing the full sequences as well as the protein IDs. With help of PDB, further
+            We visualised 89 proteins using a pre-provided FASTA-file containing the full sequences as well as the protein IDs. With help of ProteinDataBank (PDB), further
             information about the given sequences were extracted. This information is shown in the table below. For more details about each entry, refer to the 'Details' button.
             The rows in the table can be sorted according to each column name by clicking on this name. Additionally to this overview, further charts 
             to visualise specific aspects of the proteins have been implemented (see Charts/Visualizations). A multiple sequence alignment of clusters of the proteins can also be found and used for analysis (see MSA).  
@@ -78,74 +78,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        // Initialize sorting direction array
-        var sortDirections = [];
-    
-        function sortTable(columnIndex) {
-            var table, rows, switching, i, x, y, shouldSwitch;
-            table = document.getElementById("protein-table");
-            switching = true;
-    
-            // Initialize sorting direction for the column if not set
-            if (!sortDirections[columnIndex]) {
-                sortDirections[columnIndex] = "asc";
-            }
-    
-            while (switching) {
-                switching = false;
-                rows = table.getElementsByTagName("tr");
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("td")[columnIndex];
-                    y = rows[i + 1].getElementsByTagName("td")[columnIndex];
-    
-                    // Convert to numbers for comparison if possible
-                    var xValue = parseFloat(x.innerHTML.replace(/[^0-9.-]+/g,""));
-                    var yValue = parseFloat(y.innerHTML.replace(/[^0-9.-]+/g,""));
-    
-                    if (!isNaN(xValue) && !isNaN(yValue)) {
-                        if (sortDirections[columnIndex] == "asc") {
-                            if (xValue > yValue) {
-                                shouldSwitch= true;
-                                break;
-                            }
-                        } else if (sortDirections[columnIndex] == "desc") {
-                            if (xValue < yValue) {
-                                shouldSwitch= true;
-                                break;
-                            }
-                        }
-                    } else {
-                        // If not numeric, compare as strings
-                        if (sortDirections[columnIndex] == "asc") {
-                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                                shouldSwitch= true;
-                                break;
-                            }
-                        } else if (sortDirections[columnIndex] == "desc") {
-                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                                shouldSwitch= true;
-                                break;
-                            }
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                }
-            }
-    
-            // Toggle sorting direction
-            if (sortDirections[columnIndex] === "asc") {
-                sortDirections[columnIndex] = "desc";
-            } else {
-                sortDirections[columnIndex] = "asc";
-            }
-        }
-    </script>
-    
+    </div>    
 </body>
 </html>
