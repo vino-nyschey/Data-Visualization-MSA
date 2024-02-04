@@ -1,10 +1,5 @@
-from flask import Flask, render_template, request
-import os
 from collections import Counter
 import json
-
-app = Flask(__name__)
-
 
 # Define color patterns for amino acid coloring in JavaScript
 color_patterns = {
@@ -69,35 +64,3 @@ def calculate_coverage_consensus(sequences):
         consensus_percentages.append(consensus_percentage)
 
     return coverage_percentages, consensus_percentages
-
-@app.route('/')
-def index():
-    files = [f for f in os.listdir('./MSA_FLASK/fasta_files/MSA_align_files') if f.endswith('.fasta')]
-    return render_template('load.html', files=files)
-
-@app.route('/visualize', methods=['POST'])
-def visualize():
-    selected_file = request.form.get('file')
-    if not selected_file:
-        return "No file selected.", 400
-    
-    fasta_path = os.path.join('./MSA_FLASK/fasta_files/MSA_align_files', selected_file)
-    if not os.path.exists(fasta_path):
-        return "Selected file not found.", 404
-    
-    sequences = parse_fasta(fasta_path)
-    if not sequences:
-        return "No sequences found in the file.", 404
-    
-    sequence_details = get_sequence_details_from_json("./Database/ProteinDatabase.json")
-    if not sequence_details:
-        return "Error loading sequence details.", 500
-    
-    coverage_percentages, consensus_percentages = calculate_coverage_consensus(sequences)
-
-    return render_template('visualize.html', sequences=sequences, sequence_details=sequence_details,
-                           coverage_percentages=coverage_percentages, consensus_percentages=consensus_percentages,
-                           color_patterns=color_patterns)
-
-if __name__ == '__main__':
-    app.run(debug=True)

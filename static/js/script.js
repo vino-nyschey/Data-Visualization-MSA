@@ -73,57 +73,69 @@ $(document).ready(function () {
     }
 });
 
-function sortTable(col) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+// Initialize sorting direction array
+var sortDirections = [];
+    
+function sortTable(columnIndex) {
+    var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("protein-table");
     switching = true;
-    dir = "asc";
-    /* Make a loop that will continue until
-    no switching has been done: */
+
+    // Initialize sorting direction for the column if not set
+    if (!sortDirections[columnIndex]) {
+        sortDirections[columnIndex] = "asc";
+    }
+
     while (switching) {
-        // Start by saying: no switching is done:
         switching = false;
-        rows = table.rows;
-        /* Loop through all table rows (except the
-        first, which contains table headers): */
+        rows = table.getElementsByTagName("tr");
         for (i = 1; i < (rows.length - 1); i++) {
-            // Start by saying there should be no switching:
             shouldSwitch = false;
-            /* Get the two elements you want to compare,
-            one from current row and one from the next: */
-            x = rows[i].getElementsByTagName("TD")[col];
-            y = rows[i + 1].getElementsByTagName("TD")[col];
-            /* Check if the two rows should switch place,
-            based on the direction, asc or desc: */
-            if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    // If so, mark as a switch and break the loop:
-                    shouldSwitch= true;
-                    break;
+            x = rows[i].getElementsByTagName("td")[columnIndex];
+            y = rows[i + 1].getElementsByTagName("td")[columnIndex];
+
+            // Convert to numbers for comparison if possible
+            var xValue = parseFloat(x.innerHTML.replace(/[^0-9.-]+/g,""));
+            var yValue = parseFloat(y.innerHTML.replace(/[^0-9.-]+/g,""));
+
+            if (!isNaN(xValue) && !isNaN(yValue)) {
+                if (sortDirections[columnIndex] == "asc") {
+                    if (xValue > yValue) {
+                        shouldSwitch= true;
+                        break;
+                    }
+                } else if (sortDirections[columnIndex] == "desc") {
+                    if (xValue < yValue) {
+                        shouldSwitch= true;
+                        break;
+                    }
                 }
-            } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    // If so, mark as a switch and break the loop:
-                    shouldSwitch= true;
-                    break;
+            } else {
+                // If not numeric, compare as strings
+                if (sortDirections[columnIndex] == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch= true;
+                        break;
+                    }
+                } else if (sortDirections[columnIndex] == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch= true;
+                        break;
+                    }
                 }
             }
         }
         if (shouldSwitch) {
-            /* If a switch has been marked, make the switch
-            and mark that a switch has been done: */
             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
             switching = true;
-            // Each time a switch is done, increase switchcount by 1:
-            switchcount ++;
-        } else {
-            /* If no switching has been done AND the direction is "asc",
-            set the direction to "desc" and run the while loop again. */
-            if (switchcount == 0 && dir == "asc") {
-                dir = "desc";
-                switching = true;
-            }
         }
+    }
+
+    // Toggle sorting direction
+    if (sortDirections[columnIndex] === "asc") {
+        sortDirections[columnIndex] = "desc";
+    } else {
+        sortDirections[columnIndex] = "asc";
     }
 }
 
