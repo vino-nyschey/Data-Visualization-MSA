@@ -6,12 +6,13 @@ import plotly.io as pio
 import os
 import json
 
+# function to categorize the proteins according to general enzyme groupings
 def categorization(selected_species): 
     with open(os.path.abspath("./Database/ProteinDatabase.json"), "r") as file: 
         data = json.load(file)
     data = pd.json_normalize(data)
 
-    # Filter data based on selected species
+    # filter data based on selected species
     if selected_species:
         data = data[data['Species Name'].isin(selected_species)]
         data = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
@@ -20,8 +21,8 @@ def categorization(selected_species):
 
     proteinnames = data['Protein Name']
     organisms = data['Species Name']
-    general_name = [] #grouped names of proteins
-    other_names = [] #protein names part of category other
+    general_name = [] # grouped names of proteins
+    other_names = [] # protein names part of category other
 
     # summarize proteins according to general enzyme groupings
     for proteinname in proteinnames:
@@ -50,12 +51,13 @@ def categorization(selected_species):
 
     return general_name, count_others, organisms
 
+# function to divide proteins and their protein names according to their organism
 def divideByOrganism(general_name, organisms): 
-    human_proteins = [] #protein names of human proteins
-    coli_proteins = [] #protein names of E.coli proteins
-    rest_proteins = [] #protein names of other proteins
+    human_proteins = [] # protein names of human proteins
+    coli_proteins = [] # protein names of E.coli proteins
+    rest_proteins = [] # protein names of other proteins
 
-     #divide proteins according to organism
+    #cdivide proteins according to organism
     for proteinname, organism in zip(general_name, organisms):
        if 'HOMO SAPIENS' == organism:
             human_proteins.append(proteinname)
@@ -66,10 +68,11 @@ def divideByOrganism(general_name, organisms):
 
     return human_proteins, coli_proteins, rest_proteins
 
+# function to prepare labels and counts for the final bar chart
 def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others): 
-    labels_chart = [] #rest bar plot
-    labels_chart_human = [] #only human proteins
-    labels_chart_coli = [] #only E.coli proteins
+    labels_chart = [] # rest bar plot
+    labels_chart_human = [] # only human proteins
+    labels_chart_coli = [] # only E.coli proteins
     count_chart = [] 
     count_chart_human = [] 
     count_chart_coli = [] 
@@ -78,7 +81,8 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
     hovertext_coli = [] 
     
     all_proteins = list(set(general_name))
-    count_human_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items())) #each dictionary contains same protein names
+    # each dictionary contains same protein names
+    count_human_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items()))
     count_coli_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items()))
     count_rest_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items()))
     human = dict(Counter(human_proteins))
@@ -89,7 +93,7 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
     count_rest_proteins.update(rest)
     total_count = sum(count_human_proteins.values()) + sum(count_coli_proteins.values()) + sum(count_rest_proteins.values())
 
-    #human proteins
+    # human proteins
     for proteinname, number in count_human_proteins.items():
         labels_chart_human.append(proteinname)
         count_chart_human.append(number)
@@ -98,7 +102,7 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
         else:
             hovertext_human.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
     
-    #E.coli proteins
+    # E.coli proteins
     for proteinname, number in count_coli_proteins.items():
         labels_chart_coli.append(proteinname)
         count_chart_coli.append(number)
@@ -107,7 +111,7 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
         else:
             hovertext_coli.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
     
-    #rest proteins
+    # rest proteins
     for proteinname, number in count_rest_proteins.items():
         labels_chart.append(proteinname)
         count_chart.append(number)
@@ -118,15 +122,16 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
    
     return count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human
 
+# function to create bar chart (x-axis: number of proteins, y-axis: protein family names)
 def create_bar_chart(selected_species):
     general_name, count_others, organisms = categorization(selected_species)
     human_proteins, coli_proteins, rest_proteins = divideByOrganism(general_name, organisms)
     count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human = labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others)
 
-    #create bar chart
+    # create bar chart
     fig = go.Figure()
     
-    #add traces
+    # add traces (human, E.coli, other)
     fig.add_trace(go.Bar(
             x=count_chart,
             y=labels_chart,
@@ -155,8 +160,8 @@ def create_bar_chart(selected_species):
             hovertext=hovertext_coli))
     
     fig.update_layout(
-        xaxis_title="Number of Proteins",  # X-axis label
-        yaxis_title="Protein Family",  # Y-axis label
+        xaxis_title="Number of Proteins",  # x-axis label
+        yaxis_title="Protein Family",  # y-axis label
         updatemenus=[
             dict(
                 x=0, 
@@ -182,5 +187,5 @@ def create_bar_chart(selected_species):
 
     chart_data = pio.to_json(fig)
 
-    #return the dictionary
+    # return the dictionary
     return chart_data 
