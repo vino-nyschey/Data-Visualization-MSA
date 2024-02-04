@@ -24,5 +24,5 @@ species of the other function (`spciesIntoIrganism`).
 ## Example Usage
 
 ```python
-# Example usage of plot_bubble_chart
+# Example usage of create_pie_chart
 pie_chart_species = create_pie_chart(selected_species, highlight=0.2)
