@@ -19,7 +19,7 @@
     </div>
 
     <!-- Form for species selection -->
-    <form method="post" action="/species">
+    <form method="post" action="/visualisations">
         {% for species in species %}
             <label><input type="checkbox" name="species" value="{{ species }}" {% if not request.form.getlist('species') or species in request.form.getlist('species') %}checked{% endif %}>
                 {{ species | capitalize }}
