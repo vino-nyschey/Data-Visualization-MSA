@@ -5,33 +5,32 @@ With the rapid development of high-throughput techniques, biologists are faced w
 This project aims to facilitate the anaylsis of multiple protein sequences using different visualisation techniques, to expedite the overall analysis process.
 
 ### Getting Started / Installation 
-0. make sure that you have flask and python installed 
+0. make sure that you have flask and python installed (download other extensions as required in terminal)
 1. Clone repository to your local machine
 2. make sure all necessary packages have been installed
 3. run python3 website.py or python website.py (depending on version)
 
-`pip install flask`
+```
+pip install flask
    
-`git clone [url]`
+git clone git@github.com:gvarul/Data-Visualization-MSA.git
   
-`cd directory_file_path`
+cd Data-Visualization-MSA
    
-`python website.py`
+python website.py 
+```
 
-Copy the http code into chosen browser (Safari works well on Mac, Firefox...?)
+Copy the http code into chosen browser (Safari and Firefox work best)
 
 ### Data Source 
 The dataset, in form of a fasta file, used for this project is available on Ilias (private uni project).
 'protein_seqeunce_analysis_lpt.fasta'
 
-### Navigating through the website 
-#### first page 
+### Navigating the website 
+#### First Page 
 #### Charts/Visualisations
 #### MSA
 
-### Requirements
-- flask
-- pip
-- ....
+
 
 
