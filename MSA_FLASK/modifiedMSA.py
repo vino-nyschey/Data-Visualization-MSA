@@ -60,14 +60,8 @@ def calculate_coverage_consensus(sequences):
         if column:  # Check if column is not empty
             most_common_char = Counter(column).most_common(1)[0][0]
             coverage_percentage = (column.count(most_common_char) / len(column)) * 100
-            
-            # Check if the most common string is 100% uppercase or lowercase
-            if most_common_char.isupper() and all(char.isupper() for char in column):
-                consensus_percentage = 100
-            elif most_common_char.islower() and all(char.islower() for char in column):
-                consensus_percentage = 100
-            else:
-                consensus_percentage = (column.count(most_common_char) / len(column)) * 100
+        # Calculate consensus_percentage by joining the most common characters in the column
+            consensus_percentage = ''.join(Counter(column).most_common(1)[0][0])    
         else:
             consensus_percentage = 0
             consensus_percentage = '-'  # All sequences are gaps in this column
