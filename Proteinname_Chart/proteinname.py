@@ -48,7 +48,6 @@ def categorization(selected_species):
             other_names.append(proteinname.capitalize()) 
 
     count_others = Counter(other_names)
-
     return general_name, count_others, organisms
 
 # function to divide proteins and their protein names according to their organism
@@ -70,12 +69,10 @@ def divideByOrganism(general_name, organisms):
 
 # function to prepare labels and counts for the final bar chart
 def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others): 
-    labels_chart = [] # rest bar plot
-    labels_chart_human = [] # only human proteins
-    labels_chart_coli = [] # only E.coli proteins
-    count_chart = [] 
-    count_chart_human = [] 
-    count_chart_coli = [] 
+    axis_label = ['Esterase', 'Hydrolase', 'Kinase', 'Lipase', 'Other', 'Phosphatase', 'Phosphorylase', 'Transferase']
+    count_chart = [0] * len(axis_label) # rest bar plot
+    count_chart_human = [0] * len(axis_label) # only human proteins
+    count_chart_coli = [0] * len(axis_label) # only E.coli proteins
     hovertext = []
     hovertext_human = [] 
     hovertext_coli = [] 
@@ -95,8 +92,8 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
 
     # human proteins
     for proteinname, number in count_human_proteins.items():
-        labels_chart_human.append(proteinname)
-        count_chart_human.append(number)
+        index = axis_label.index(proteinname)
+        count_chart_human[index] = number
         if "Other" in proteinname:
             hovertext_human.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
         else:
@@ -104,29 +101,29 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
     
     # E.coli proteins
     for proteinname, number in count_coli_proteins.items():
-        labels_chart_coli.append(proteinname)
-        count_chart_coli.append(number)
+        index = axis_label.index(proteinname)
+        count_chart_coli[index] = number
         if "Other" in proteinname:
             hovertext_coli.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
         else:
             hovertext_coli.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
-    
+   
     # rest proteins
     for proteinname, number in count_rest_proteins.items():
-        labels_chart.append(proteinname)
-        count_chart.append(number)
+        index = axis_label.index(proteinname)
+        count_chart[index] = number
         if "Other" in proteinname:
             hovertext.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
         else:
             hovertext.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
    
-    return count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human
+    return count_chart, count_chart_human, count_chart_coli, hovertext, hovertext_coli, hovertext_human, axis_label
 
 # function to create bar chart (x-axis: number of proteins, y-axis: protein family names)
 def create_bar_chart(selected_species):
     general_name, count_others, organisms = categorization(selected_species)
     human_proteins, coli_proteins, rest_proteins = divideByOrganism(general_name, organisms)
-    count_chart, labels_chart, count_chart_human, labels_chart_human, count_chart_coli, labels_chart_coli, hovertext, hovertext_coli, hovertext_human = labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others)
+    count_chart, count_chart_human, count_chart_coli, hovertext, hovertext_coli, hovertext_human, axis_label = labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others)
 
     # create bar chart
     fig = go.Figure()
@@ -134,7 +131,7 @@ def create_bar_chart(selected_species):
     # add traces (human, E.coli, other)
     fig.add_trace(go.Bar(
             x=count_chart,
-            y=labels_chart,
+            y=axis_label,
             orientation='h',
             name='Other Proteins',
             marker_color = '#EF553B',
@@ -143,7 +140,7 @@ def create_bar_chart(selected_species):
     
     fig.add_trace(go.Bar(
             x=count_chart_human,
-            y=labels_chart_human,
+            y=axis_label,
             orientation='h',
             name='Homo Sapiens Proteins',
             marker_color = "#636EFA",
@@ -152,7 +149,7 @@ def create_bar_chart(selected_species):
     
     fig.add_trace(go.Bar(
             x=count_chart_coli,
-            y=labels_chart_coli,
+            y=axis_label,
             orientation='h',
             name='E.coli Proteins',
             marker_color = '#00CC96',
