@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Select Fasta File</h1>
-    <form action="/visualize" method="post">
+    <form action="/msa" method="post">
         <select name="file">
             {% for file in files %}
             <option value="{{ file }}">{{ file.split('_')[0] }}</option>
