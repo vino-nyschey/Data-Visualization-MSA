@@ -59,8 +59,9 @@ This function generates a pie chart to visualize protein data. It takes two para
 The function filters the data based on selected species and generates a pie chart representing the count of occurrences for each Protein Family. Each slice of the pie chart represents a Protein Family, with the size of the slice proportional to the count. Hover information is provided to display the count and percentage of each Protein Family.
 
    2.2) 
+   
    Protein Species Distribution
-   > Function: create_pie_chart(selected_species, highlight=0.2)
+   > Function: `create_pie_chart(selected_species, highlight=0.2)`
 
 Following the same principles as above. Each Protein belonging to which species is shown. Hover function enables seeing additional information, that is not immediately obvious.
 
@@ -68,16 +69,19 @@ Following the same principles as above. Each Protein belonging to which species 
    
     Protein Family Name
    
-   > Function:create_bar_chart(selected_species)
+   > Function: `create_bar_chart(selected_species)`
    
 Protein families with their associated number of proteins displayed. Independent of the other charts, you can select different species and only display them in the plot.
 
    
 #### MSA
 
+Proteins are clustered into their respectove groups. Output a MSA for each protein family.
+MSA sequence tool used: 
+In MSA window you can choose a colour design. Choice between colours used in Clustal, Lesk and a Custom colour palette to accomodate various contrasts.
 
 #### Extras
-In the files `Database` and `Fetch-AA-info` are additional ReadMe's describing preprocessing and data handling. 
+In the files `Database`, `Fetch-AA-info` and `MSA_FLASK are additional ReadMe's describing preprocessing and data handling. 
 
 
 
