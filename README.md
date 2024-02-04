@@ -47,8 +47,9 @@ This function generates a bubble chart to visualize protein data. It takes two p
 The function converts the 'Discovered Year' column to integers, filters the data based on selected species, and generates a bubble chart with Sequence ID on the x-axis, Discovered Year on the y-axis, and Protein Family as the color-coded bubbles. Additional features include sizing bubbles by the number of chains and providing hover information.
 
 2) Pie Charts:
-2.1)
-   Name: 
+   
+   2.1)
+   Protein Family Name Distribution
     > Function: `plot_pie_chart(data, selected_species)`
 
 This function generates a pie chart to visualize protein data. It takes two parameters:
@@ -57,21 +58,27 @@ This function generates a pie chart to visualize protein data. It takes two para
 
 The function filters the data based on selected species and generates a pie chart representing the count of occurrences for each Protein Family. Each slice of the pie chart represents a Protein Family, with the size of the slice proportional to the count. Hover information is provided to display the count and percentage of each Protein Family.
 
-2.2) 
-   Name: 
-   > Function:
-....
+   2.2) 
+   Protein Species Distribution
+   > Function: create_pie_chart(selected_species, highlight=0.2)
+
+Following the same principles as above. Each Protein belonging to which species is shown. Hover function enables seeing additional information, that is not immediately obvious.
 
 3) Bar Chart:
-   Name:
-   > Function:
+   
+    Protein Family Name
+   
+   > Function:create_bar_chart(selected_species)
+   
+Protein families with their associated number of proteins displayed. Independent of the other charts, you can select different species and only display them in the plot.
 
    
 #### MSA
-...
 
 
-Where should I mention what programming languages were used? -> Is this relevant?
-Possibly adding more images of visualisations.
+#### Extras
+In the files `Database` and `Fetch-AA-info` are additional ReadMe's describing preprocessing and data handling. 
+
+
 
 
