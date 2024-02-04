@@ -10,10 +10,13 @@ This project aims to facilitate the anaylsis of multiple protein sequences using
 2. make sure all necessary packages have been installed
 3. run python3 website.py or python website.py (depending on version)
 
-   pip install flask
-   git clone [url]
-   cd directory file path
-   python website.py
+`pip install flask`
+   
+`git clone [url]`
+  
+`cd directory_file_path`
+   
+`python website.py`
 
 Copy the http code into chosen browser (Safari works well on Mac, Firefox...?)
 
