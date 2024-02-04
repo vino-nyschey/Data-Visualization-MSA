@@ -1,5 +1,125 @@
-.organism{
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+/* Table */
+.container-grid {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
+/* Descriptive Text */
+.non-chart-text  {
+    font-size: 22px;
+    text-align: left;
+    margin: 100px 100px 35px 100px;
+}
+
+/* Protein and Sequence Details */
+.container-grid-details {
+    display: grid;
+    grid-template-rows: auto auto;
+    box-sizing: border-box;
+    width: 50%;
+    height: auto;
+    padding: 10px;
+    margin: 0 25% 35px 25%;
+    overflow: hidden;
+    align-self: center;
+}
+
+/* Buttons for subwebpages */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 70px;
+}
+
+.container button {
+    font-size: 17px;
+}
+
+/* Table header */
+.table-header th {
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.table-header thead {
+    border-radius: 4px;
+}
+
+/* Table */
+#protein-table tbody tr:hover {
+    background-color: hsl(144, 34%, 80%);
+}
+
+.btn-table-spec {
+    background-color: #4CAF50;
+    color: #fff;
+    border: 0;
+}
+
+.btn-table-spec:hover {
+    background-color: #45a049;
+    border: 1;
+    color: #fff;
+}
+
+.chart-card-base {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 500px;
+    position: relative;
+}
+
+#protein-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+#protein-table th,
+#protein-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table {
+    font-size: 15px;
+}
+
+.protein-details-container, .sequence-details-container, .sequence-details-header {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+h3 {
+    color: #333;
+    margin-left: 20px;
+}
+
+/* Details below Table */
+#protein-details, #sequence-details {
+    margin-top: 20px;
+    text-align: left;  
+}
+
+#sequence-details, .protein-detail-table{
+    margin-left: 40px;
+}
+
+span.amino-acid {
+    font-family: monospace;
+}

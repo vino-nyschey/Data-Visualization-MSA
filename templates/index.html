@@ -29,7 +29,7 @@
         <button name="update_plots" type="submit">Update Plots</button>
     </form>
 
-    <!-- Plotly bubble chart container -->
+    <!-- Bubble Chart -->
     <div class="full-width-chart-container">
         <div class="chart-card">
             <div class="chart-title">
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <!-- Left Chart -->
+    <!-- Left Protein Family Pie Chart -->
     <div class="chart-container">
         <div class="chart-card">
             <div class="chart-title">
@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <!-- Right Chart -->
+    <!-- Right Organism Pie Chart -->
     <div class="chart-container">
         <div class="chart-card">
             <div class="chart-title">
@@ -89,6 +89,7 @@
         </div>
     </div>
 
+    <!-- Bar Chart -->
     <div class="full-width-chart-container">
         <div class="chart-card">
             <div class="chart-title">
@@ -109,7 +110,7 @@
     </div>
 
     <script>
-        // Function to select or deselect all checkboxes
+        // function to select or deselect all checkboxes
         function selectAll() {
             var checkboxes = document.querySelectorAll('input[name="species"]');
             var selectAllCheckbox = document.getElementById('select-all-label');
