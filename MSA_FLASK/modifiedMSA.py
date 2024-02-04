@@ -47,6 +47,8 @@ def parse_fasta(file_path):
     return sequences
 
 
+from collections import Counter
+
 def calculate_coverage_consensus(sequences):
     total_length = len(sequences[0][1])  # Assuming all sequences have the same length
     coverage_percentages = []
@@ -54,12 +56,22 @@ def calculate_coverage_consensus(sequences):
 
     for i in range(total_length):
         column = [seq[1][i] for seq in sequences if seq[1][i] != '-']  # Exclude "-" characters
+
         if column:  # Check if column is not empty
-            coverage_percentage = (column.count('-') / len(column)) * 100
-            consensus_percentage = (Counter(column).most_common(1)[0][1] / len(column)) * 100
+            most_common_char = Counter(column).most_common(1)[0][0]
+            coverage_percentage = (column.count(most_common_char) / len(column)) * 100
+            
+            # Check if the most common string is 100% uppercase or lowercase
+            if most_common_char.isupper() and all(char.isupper() for char in column):
+                consensus_percentage = 100
+            elif most_common_char.islower() and all(char.islower() for char in column):
+                consensus_percentage = 100
+            else:
+                consensus_percentage = (column.count(most_common_char) / len(column)) * 100
         else:
-            coverage_percentage = 100  # All sequences are gaps in this column
             consensus_percentage = 0
+            consensus_percentage = '-'  # All sequences are gaps in this column
+
         coverage_percentages.append(coverage_percentage)
         consensus_percentages.append(consensus_percentage)
 

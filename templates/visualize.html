@@ -133,14 +133,17 @@
     
             // Create footer row for coverage percentages
             const coverageFooterRow = document.createElement('tr');
-            coverageFooterRow.innerHTML = `<td>Coverage (%)</td>${coveragePercentages.map(coverage => `<td>${coverage.toFixed(2)}</td>`).join('')}`;
+            coverageFooterRow.innerHTML = `<td>Coverage %</td>${coveragePercentages.map(coverage => `<td>${coverage.toFixed(2)}</td>`).join('')}`;
             table.appendChild(coverageFooterRow);
     
             // Create footer row for consensus percentages
             const consensusFooterRow = document.createElement('tr');
-            consensusFooterRow.innerHTML = `<td>Consensus (%)</td>${consensusPercentages.map(consensus => `<td>${consensus.toFixed(2)}</td>`).join('')}`;
+            consensusFooterRow.innerHTML = `<td>Consensus Seq</td>${consensusPercentages.map((consensus, index) => {
+                const backgroundColor = getColorWithOpacity(colorScale, consensus, coveragePercentages[index] / 100);
+                return `<td style="background-color: ${backgroundColor}; color: ${getContrastColorForFooter(backgroundColor)}">${consensus}</td>`;
+            }).join('')}`;
             table.appendChild(consensusFooterRow);
-    
+
             matrixPlotContainer.appendChild(table);
         }
     
@@ -156,6 +159,39 @@
                 return '#FFFFFF'; // Default color: White
             }
         }
+
+        // Function to get color with opacity based on coverage
+        function getColorWithOpacity(colorScale, aa, coverage) {
+            const baseColor = getColor(colorScale, aa) || '#FFFFFF'; // Default color: White
+            const rgbaColor = hexToRgbA(baseColor, coverage);
+            return rgbaColor;
+        }
+
+        // Function to convert hex color to rgba with opacity
+        function hexToRgbA(hex, opacity) {
+            let rgbaColor = 'rgba(255, 255, 255, 0)'; // Default: White with 0 opacity
+
+            const match = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+            if (match) {
+                const [, r, g, b] = match;
+                rgbaColor = `rgba(${parseInt(r, 16)}, ${parseInt(g, 16)}, ${parseInt(b, 16)}, ${opacity})`;
+            }
+
+            return rgbaColor;   
+        }
+        // Function to get contrast color based on background color brightness
+        function getContrastColorForFooter(backgroundColor) {
+        // Convert hexadecimal color to RGB
+            const rgb = hexToRgbA(backgroundColor);
+
+        // Calculate brightness using a weighted formula
+            const brightness = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b);
+
+        // Return white for dark background, black for light background
+            return brightness > 128 ? '#FFFFFF' : '#000000';
+        }
+
+
     
         // Function to get contrast color based on background color brightness
         function getContrastColor(backgroundColor) {
