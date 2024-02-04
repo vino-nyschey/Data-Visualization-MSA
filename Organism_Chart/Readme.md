@@ -7,9 +7,10 @@ This Python script contains functions to generate interactive visualization for 
 ### `speciesIntoOrganism(selected_species)`
 
 This function provides a list with all selected species. It takes one parameter: 
-- `selected_species`: List of selected species for filterin the data-
+- `selected_species`: List of selected species for filtering the data.
 
-The provided list of species is used to highlight them within the pie chart. 
+The list of selected species needs to be transformed to provide a list of species, which 
+can be used to highlight them within the pie chart. 
 
 ### `create_pie_chart(selected_species, highlight=0.2)`
 
