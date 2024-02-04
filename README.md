@@ -23,7 +23,7 @@ python website.py
 Copy the code into chosen browser. We recommend Safari and Firefox, which are working best.
 
 ### Data Source 
-The project is based on a dataset, in form of a fasta file (`protein_seqeunce_analysis_lpt.fasta`), which is available in `DataSource`. The file consists of 89 Protein Sequences and their respective protein IDs. 
+The project is based on a dataset, in form of a fasta file (`protein_sequence_analysis_lpt.fasta`), which is available in `DataSource`. The file consists of 89 Protein Sequences and their respective protein IDs. 
 
 ### Navigating the website 
 #### First Page 
