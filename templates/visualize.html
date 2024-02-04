@@ -3,43 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSA Visualization</title>
+    <title>MSA Visualization - Clustered Protein Sequences by Protein Family</title>
     <style>
-        /* Table styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+  
+        #header-container {
+            position: fixed;
+            text-align: center;
+            margin-bottom: 10px;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 0px 0;
+            z-index: 2;
+        }
+  
+        #scientific-header {
+            font-size: 24px;
+            font-weight: bold;
+        }
+  
+        #description {
+            text-align: center;
+            margin: 10px auto;
+            width: 80%;
+        }
+  
         .table-container {
             overflow-x: auto; /* Enable horizontal scrolling */
             position: relative; /* Required for fixing elements */
+            margin-top: 70px; /* Adjusted margin to avoid overlap with the header */
         }
-        
+            
         .fixed-header, .fixed-seqid {
             position: sticky;
             top: 0;
             z-index: 1;
             background-color: #fff; /* Background color for fixed elements */
         }
-
+    
+        #color-buttons-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 3; /* Higher z-index to be above the table and seqId column */
+            background-color: #f2f2f2; /* Background color for fixed buttons */
+            width: auto; /* Full width */
+        }
+    
+        #color-buttons {
+            text-align: right;
+        }
+    
+        #color-buttons button {
+            margin-left: 5px;
+        }
+    
         .fixed-footer {
             position: sticky;
             bottom: 0;
-            z-index: 1;
+            z-index: 2;
             background-color: #f2f2f2; /* Background color for fixed footer */
         }
-
+    
         table {
             border-collapse: collapse;
             margin: 2px auto;
             font-size: smaller;
             width: 100%;
             height: 80%;
-        }
-
+            }
+    
         th, td {
             padding: 2px;
             text-align: center;
             font-family: Arial, sans-serif;
             border: 0px solid #ddd;
         }
-
+    
         /* Make the first column sticky */
         th:first-child, td:first-child {
             position: sticky;
@@ -47,27 +91,44 @@
             z-index: 2; /* Higher z-index to be above the table */
             background-color: #fff; /* Background color for fixed first column */
         }
-
+   
         /* Footer row styles */
         tr:last-child {
             background-color: #f2f2f2; /* Background color for footer rows */
         }
-
-        /* Tooltip styles */
+    
+            /* Tooltip styles */
         td[title] {
             position: relative;
         }
-
+    
     </style>
 </head>
 <body>
-    <div id="color-buttons">
-        <button id="clustal-button">Clustal</button>
-        <button id="lesk-button">Lesk</button>
-        <button id="custom-button">Custom</button>
+    <div id="header-container">
+        <div id="scientific-header">
+            MSA - Plot of Clustered Proteins by Protein Family
+        </div>
+        <div id="description">
+        Protein sequences were systematically clustered, and for each distinct protein family, FASTA files were meticulously generated. The clustering process involved the utilization of the MUSCLE alignment online tool, accessible at <a href="https://www.ebi.ac.uk/tools/msa/muscle/" target="_blank">ebi.ac.uk/tools/MSA/muscle/</a>.
+    </div>
     </div>
 
-    <div id="matrix-plot-container"></div>
+    <div id="description">
+        Protein sequences were systematically clustered, and for each distinct protein family, FASTA files were meticulously generated. The clustering process involved the utilization of the MUSCLE alignment online tool, accessible at <a href="https://www.ebi.ac.uk/tools/msa/muscle/" target="_blank">ebi.ac.uk/tools/MSA/muscle/</a>.
+    </div>
+
+    <div class="content-container">
+        <div id="color-buttons-container">
+            <div id="color-buttons">
+                <button id="clustal-button">Clustal</button>
+                <button id="lesk-button">Lesk</button>
+                <button id="custom-button">Custom</button>
+            </div>
+        </div>
+
+        <div id="matrix-plot-container" class="table-container"></div>
+    </div>
 
     <script>
         // Fetch data from Flask backend
