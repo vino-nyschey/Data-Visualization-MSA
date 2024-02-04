@@ -15,42 +15,46 @@
     <p>
         This web page serves as a tool for the visual exploration of Multiple Sequence Alignments (MSA) in the context of protein sequences. The underlying Python script is designed to parse sequence data, extract essential details, and compute coverage and consensus percentages for subsequent visualization.
     </p>
-
-    <h2>Key Components</h2>
-
+    
+    <p><strong>Key Components</strong></p>
     <ul>
         <li>
-            <strong>Color Patterns:</strong> Amino acid coloring is customized based on alignment methods, including Clustal, Lesk, and Custom.
+             Amino acid coloring is customized based on alignment methods, including Clustal, Lesk, and Custom.
         </li>
         <li>
-            <strong><code>get_sequence_details_from_json</code> Function:</strong> This function reads a JSON file containing pertinent information about protein sequences. Extracted details include organism, protein name, engineered status, sequence length, and the number of chains.
+             Function, that reads a JSON file containing pertinent information about protein sequences. Extracted details include organism, protein name, engineered status, sequence length, and the number of chains.
         </li>
         <li>
-            <strong><code>parse_fasta</code> Function:</strong> Responsible for processing FASTA files containing protein sequences, this function extracts sequence IDs and their corresponding sequences, presenting the data as a list of tuples.
+            Another Function, that responsible for processing FASTA files containing protein sequences, this function extracts sequence IDs and their corresponding sequences, presenting the data as a list of tuples.
         </li>
         <li>
-            <strong><code>calculate_coverage_consensus</code> Function:</strong> Operating on a list of sequences, this function calculates coverage percentages and consensus percentages for each position within the alignment.
+            Third Function, operating on a list of sequences, this function calculates coverage percentages and consensus percentages for each position within the alignment.
         </li>
     </ul>
 
     <p>
-        This script serves as an integral utility within a broader application or visualization tool, specializing in preparing data for the visual analysis of protein sequence alignments.
+        <strong>Important Note:</strong> It is crucial to note that this tool is specifically tailored for visualizing pre-aligned MSA files in FASTA format.
     </p>
 
     <p>
-        <strong>Important Note:</strong> It is crucial to note that this tool is specifically tailored for visualizing pre-aligned MSA files in FASTA format.
-    </p>
+        MUSCLE alignment online tool, accessible at ebi.ac.uk/tools/MSA/muscle/.
+   </p>
+
+
 </div>
 
-    <div class="container-button">
-        <form action="/msa" method="post">
-            <select name="file">
-                {% for file in files %}
-                <option value="{{ file }}">{{ file.split('_')[0] }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit" class="container-button">MSA-Plot</button>
-        </form>
+    <div class="chart-card-base">
+        <div class="container-button">
+            <form action="/msa" method="post">
+                <select name="file">
+                    {% for file in files %}
+                    <option value="{{ file }}">{{ file.split('_')[0] }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="container-button">MSA-Plot</button>
+            </form>
+        </div>
     </div>
+
 </body>
 </html>

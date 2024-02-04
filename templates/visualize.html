@@ -105,19 +105,6 @@
     </style>
 </head>
 <body>
-    <div id="header-container">
-        <div id="scientific-header">
-            MSA - Plot of Clustered Proteins by Protein Family
-        </div>
-        <div id="description">
-        Protein sequences were systematically clustered, and for each distinct protein family, FASTA files were meticulously generated. The clustering process involved the utilization of the MUSCLE alignment online tool, accessible at <a href="https://www.ebi.ac.uk/tools/msa/muscle/" target="_blank">ebi.ac.uk/tools/MSA/muscle/</a>.
-    </div>
-    </div>
-
-    <div id="description">
-        Protein sequences were systematically clustered, and for each distinct protein family, FASTA files were meticulously generated. The clustering process involved the utilization of the MUSCLE alignment online tool, accessible at <a href="https://www.ebi.ac.uk/tools/msa/muscle/" target="_blank">ebi.ac.uk/tools/MSA/muscle/</a>.
-    </div>
-
     <div class="content-container">
         <div id="color-buttons-container">
             <div id="color-buttons">
@@ -140,10 +127,26 @@
         // Define color patterns for Clustal, Lesk, and Custom
         const colorPatterns = {
             Clustal: {
-                G: '#FFA500', P: '#FFA500', S: '#FFA500', T: '#FFA500',
-                H: '#FF0000', K: '#FF0000', R: '#FF0000',
-                F: '#0000FF', W: '#0000FF', Y: '#0000FF',
-                I: '#008000', L: '#008000', M: '#008000', V: '#008000'
+                A: '#87CEEB', /* Alanine - Sky Blue */
+                I: '#87CEEB', /* Isoleucine - Sky Blue */
+                L: '#87CEEB', /* Leucine - Sky Blue */
+                M: '#87CEEB', /* Methionine - Sky Blue */
+                F: '#87CEEB', /* Phenylalanine - Sky Blue */
+                W: '#87CEEB', /* Tryptophan - Sky Blue */
+                V: '#87CEEB', /* Valine - Sky Blue */
+                C: '#FFC0CB', /* Cysteine - Pink */
+                K: '#FF0000', /* Lysine - Red */
+                R: '#FF0000', /* Arginine - Red */
+                E: '#FF00FF', /* Glutamic acid - Magenta */
+                D: '#FF00FF', /* Aspartic acid - Magenta */
+                N: '#008000', /* Asparagine - Green */
+                Q: '#008000', /* Glutamine - Green */
+                S: '#008000', /* Serine - Green */
+                T: '#008000', /* Threonine - Green */
+                G: '#FFA500', /* Glycine - Orange */
+                P: '#FFD700', /* Proline - Sunflower Yellow */
+                H: '#00FFFF', /* Histidine - Cyan */
+                Y: '#00FFFF'  /* Tyrosine - Cyan */
             },
             Lesk: {
                 G: '#FFA500', A: '#FFA500', S: '#FFA500', T: '#FFA500',
