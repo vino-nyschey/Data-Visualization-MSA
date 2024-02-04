@@ -35,7 +35,7 @@ def get_protein_details():
         return jsonify({})
 
 
-@app.route('/species', methods=['GET', 'POST'])
+@app.route('/visualisations', methods=['GET', 'POST'])
 def chart():
     # Read JSON data from file
     json_file_path = 'Database/ProteinDatabase.json'
