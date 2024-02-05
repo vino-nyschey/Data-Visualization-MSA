@@ -73,7 +73,6 @@ button:hover {
     width: 100%;
     padding: 20px;
     overflow: hidden;
-    margin-bottom: 20px;
 }
 
 .chart-card {
@@ -82,7 +81,6 @@ button:hover {
     border-radius: 8px;
     overflow: hidden;
     padding: 0 5px;
-    margin-bottom: 10px; 
     height: 660px;
 }
 
@@ -101,3 +99,4 @@ button:hover {
     text-align: left;
     margin: 100px 100px 100px 100px;
 }
+
