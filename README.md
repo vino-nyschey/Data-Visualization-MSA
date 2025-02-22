@@ -12,6 +12,8 @@ This project aims to facilitate the anaylsis of multiple protein sequences using
 
 ```
 pip install flask
+pip install plotly
+pip install pandas
    
 git clone git@github.com:gvarul/Data-Visualization-MSA.git
   
