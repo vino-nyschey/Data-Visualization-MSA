@@ -70,53 +70,26 @@ def divideByOrganism(general_name, organisms):
 # function to prepare labels and counts for the final bar chart
 def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others): 
     axis_label = ['Esterase', 'Hydrolase', 'Kinase', 'Lipase', 'Other', 'Phosphatase', 'Phosphorylase', 'Transferase']
-    count_chart = [0] * len(axis_label) # rest bar plot
-    count_chart_human = [0] * len(axis_label) # only human proteins
-    count_chart_coli = [0] * len(axis_label) # only E.coli proteins
-    hovertext = []
-    hovertext_human = [] 
-    hovertext_coli = [] 
-    
-    all_proteins = list(set(general_name))
-    # each dictionary contains same protein names
-    count_human_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items()))
-    count_coli_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items()))
-    count_rest_proteins = dict(sorted(dict(Counter({label: 0 for label in all_proteins})).items()))
-    human = dict(Counter(human_proteins))
-    count_human_proteins.update(human)
-    coli = dict(Counter(coli_proteins))
-    count_coli_proteins.update(coli)
-    rest = dict(Counter(rest_proteins))
-    count_rest_proteins.update(rest)
-    total_count = sum(count_human_proteins.values()) + sum(count_coli_proteins.values()) + sum(count_rest_proteins.values())
+    # add any further category (e.g. 'Peptide') found in the data so it does not get lost
+    axis_label += sorted(set(general_name) - set(axis_label))
+    total_count = len(human_proteins) + len(coli_proteins) + len(rest_proteins)
 
-    # human proteins
-    for proteinname, number in count_human_proteins.items():
-        index = axis_label.index(proteinname)
-        count_chart_human[index] = number
-        if "Other" in proteinname:
-            hovertext_human.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
-        else:
-            hovertext_human.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
-    
-    # E.coli proteins
-    for proteinname, number in count_coli_proteins.items():
-        index = axis_label.index(proteinname)
-        count_chart_coli[index] = number
-        if "Other" in proteinname:
-            hovertext_coli.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
-        else:
-            hovertext_coli.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
-   
-    # rest proteins
-    for proteinname, number in count_rest_proteins.items():
-        index = axis_label.index(proteinname)
-        count_chart[index] = number
-        if "Other" in proteinname:
-            hovertext.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
-        else:
-            hovertext.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
-   
+    # counts and hovertexts are built in axis_label order so each hovertext belongs to its bar
+    def countsAndHovertext(proteins):
+        counts = Counter(proteins)
+        count_chart = [counts.get(label, 0) for label in axis_label]
+        hovertext = []
+        for proteinname, number in zip(axis_label, count_chart):
+            if proteinname == "Other":
+                hovertext.append(f"Other ({number}):<br>" + "<br>".join([f"{n}: {count/total_count:.2%}" for n, count in count_others.items()]))
+            else:
+                hovertext.append(f"{proteinname} ({number})<br> {number/total_count:.2%}")
+        return count_chart, hovertext
+
+    count_chart_human, hovertext_human = countsAndHovertext(human_proteins) # only human proteins
+    count_chart_coli, hovertext_coli = countsAndHovertext(coli_proteins) # only E.coli proteins
+    count_chart, hovertext = countsAndHovertext(rest_proteins) # rest bar plot
+
     return count_chart, count_chart_human, count_chart_coli, hovertext, hovertext_coli, hovertext_human, axis_label
 
 # function to create bar chart (x-axis: number of proteins, y-axis: protein family names)

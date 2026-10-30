@@ -10,6 +10,8 @@ def plot_bubble_chart(data, selected_species):
 
     # Filter data based on selected species
     data = data[data['Species Name'].isin(selected_species)]
+    # capitalized family name per row for the hovertext
+    data = data.assign(**{'Family Label': data['Protein Family'].fillna('').astype(str).str.capitalize()})
     # color map
     unique_proteins = data['Protein Family'].unique()
     color_map = {protein: px.colors.qualitative.Plotly[i % 10] for i, protein in enumerate(unique_proteins)}
@@ -24,7 +26,8 @@ def plot_bubble_chart(data, selected_species):
                      labels={'x': 'Sequence ID', 'y': 'Discovered Year'},
                      template='plotly', 
                      height=500,
-                     hover_name='Protein Name'  # Specify the hover information here
+                     hover_name='Protein Name',  # Specify the hover information here
+                     custom_data=['Family Label']
                      )
 
     # capitalize legend labels
@@ -32,8 +35,7 @@ def plot_bubble_chart(data, selected_species):
 
     # create hovertext
     fig.update_traces(hovertemplate='<b>%{hovertext}</b>'
-                                    '<br><br>Protein Family: ' + data['Protein Family'].apply(
-                    lambda x: str(x).capitalize() if pd.notna(x) else '').tolist()[0] +
+                                    '<br><br>Protein Family: %{customdata[0]}'
                                     '<br>Sequence ID: %{x}'
                                     '<br>Discovered Year: %{y}'
                                     '<br>No. of Chains: %{marker.size}'

@@ -92,9 +92,11 @@ def visualize():
     if not selected_file:
         return "No file selected.", 400
     
-    fasta_path = os.path.join('./MSA_FLASK/fasta_files/MSA_align_files', selected_file)
-    if not os.path.exists(fasta_path):
+    # only accept files listed in the alignment folder (prevents reading other files via '../')
+    msa_dir = './MSA_FLASK/fasta_files/MSA_align_files'
+    if selected_file not in os.listdir(msa_dir) or not selected_file.endswith('.fasta'):
         return "Selected file not found.", 404
+    fasta_path = os.path.join(msa_dir, selected_file)
     
     sequences = parse_fasta(fasta_path)
     if not sequences:
@@ -110,4 +112,5 @@ def visualize():
                            coverage_percentages=coverage_percentages, consensus_percentages=consensus_percentages,
                            color_patterns=color_patterns)
 if __name__ == '__main__':
-    app.run(debug=True)
+    # debug mode (interactive debugger) only when explicitly enabled, e.g. FLASK_DEBUG=1
+    app.run(debug=os.environ.get('FLASK_DEBUG') == '1')

@@ -63,7 +63,7 @@ def calculate_coverage_consensus(sequences):
         # Calculate consensus_percentage by joining the most common characters in the column
             consensus_percentage = ''.join(Counter(column).most_common(1)[0][0])    
         else:
-            consensus_percentage = 0
+            coverage_percentage = 0
             consensus_percentage = '-'  # All sequences are gaps in this column
 
         coverage_percentages.append(coverage_percentage)

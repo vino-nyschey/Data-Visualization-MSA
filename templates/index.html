@@ -113,7 +113,7 @@
         // function to select or deselect all checkboxes
         function selectAll() {
             var checkboxes = document.querySelectorAll('input[name="species"]');
-            var selectAllCheckbox = document.getElementById('select-all-label');
+            var selectAllCheckbox = document.getElementById('select-all');
 
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = selectAllCheckbox.checked;
