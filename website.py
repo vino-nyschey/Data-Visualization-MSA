@@ -1,35 +1,54 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 import os
-import json
-import pandas as pd
+import shutil
+import urllib.error
 
 from BubbleChart.species import plot_bubble_chart, plot_pie_chart
 from Organism_Chart.organism import create_pie_chart
 from Proteinname_Chart.proteinname import create_bar_chart
 from MSA_FLASK.modifiedMSA import get_sequence_details_from_json, parse_fasta, calculate_coverage_consensus, color_patterns
+import dataset
   
 app = Flask(__name__, static_url_path='/static')
+app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024  # largest accepted FASTA upload
 
 
-# Load protein data
-json_file_path = "./Database/ProteinDatabase.json"
-
-if os.path.exists(json_file_path):
-    with open(os.path.abspath(json_file_path), 'r') as json_file:
-        protein_data = json.load(json_file)
-        
-else:
-    protein_data = []
-    
+def render_overview(upload_error=None):
+    protein_data = dataset.load_protein_data()
+    return render_template('base.html', data=protein_data,  # Pass protein_data to template
+                           protein_count=len({protein['PDB ID'] for protein in protein_data}),
+                           uploaded_dataset=dataset.using_uploaded_dataset(), upload_error=upload_error)
 
 @app.route('/')
 def index():
-    return render_template('base.html', data=protein_data)  # Pass protein_data to template
+    return render_overview()
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    # build a new dataset (database + MSAs) from an uploaded or pasted FASTA file
+    from Pipeline.build_dataset import build_dataset, InputError  # needs biopython
+    uploaded = request.files.get('fasta_file')
+    fasta_text = uploaded.read().decode('utf-8', errors='replace') if uploaded and uploaded.filename else request.form.get('fasta_text', '')
+    if not fasta_text.strip():
+        return render_overview("Please choose a FASTA file or paste sequences."), 400
+    try:
+        build_dataset(fasta_text, out_dir=dataset.ACTIVE_DIR)
+    except InputError as e:
+        return render_overview(f"Invalid FASTA input: {e}"), 400
+    except urllib.error.URLError as e:
+        return render_overview(f"Could not fetch protein information from RCSB PDB: {e.reason}"), 502
+    return redirect(url_for('index'))
+
+@app.route('/reset_dataset', methods=['POST'])
+def reset_dataset():
+    # go back to the bundled sample dataset
+    shutil.rmtree(dataset.ACTIVE_DIR, ignore_errors=True)
+    return redirect(url_for('index'))
 
 @app.route('/get_protein_details', methods=['POST'])
 def get_protein_details():
     sequence_id = request.json['sequence_id']
-    selected_protein = next((protein for protein in protein_data if protein['Sequence ID'] == sequence_id), None)
+    selected_protein = next((protein for protein in dataset.load_protein_data() if protein['Sequence ID'] == sequence_id), None)
     if selected_protein:
         return jsonify(selected_protein)
     else:
@@ -38,18 +57,10 @@ def get_protein_details():
 
 @app.route('/visualisations', methods=['GET', 'POST'])
 def chart():
-    # Read JSON data from file
-    json_file_path = 'Database/ProteinDatabase.json'
-    
-    if not os.path.exists(json_file_path):
-        return "Error: JSON file not found. Please make sure the file exists."
-
-    # Load JSON data into a DataFrame
-    with open(json_file_path, 'r') as json_file:
-        json_data = json.load(json_file)
-
-    # Convert the JSON data to a DataFrame
-    df = pd.json_normalize(json_data)
+    # Load the protein data of the current dataset into a DataFrame
+    df = dataset.load_protein_dataframe()
+    if df.empty:
+        return "Error: no protein data found. Please upload a FASTA file."
 
     # Get unique species names for checkbox buttons
     unique_species = sorted(df['Species Name'].unique())
@@ -62,16 +73,16 @@ def chart():
         selected_species = request.form.getlist('species') if request.form.getlist('species') else unique_species
         bubble_chart = plot_bubble_chart(df, selected_species)
         pie_chart = plot_pie_chart(df, selected_species)
-        proteinname_plot = create_bar_chart(selected_species)
-        organism_plot = create_pie_chart(selected_species)
+        proteinname_plot = create_bar_chart(df, selected_species)
+        organism_plot = create_pie_chart(df, selected_species)
         data = df[df['Species Name'].isin(selected_species)].to_dict(orient='records')
     else:
         selected_species = unique_species
         bubble_chart = plot_bubble_chart(df, selected_species)
         pie_chart = plot_pie_chart(df, selected_species)
         data = df.to_dict(orient='records')
-        proteinname_plot = create_bar_chart(selected_species)
-        organism_plot = create_pie_chart(selected_species)
+        proteinname_plot = create_bar_chart(df, selected_species)
+        organism_plot = create_pie_chart(df, selected_species)
     
     # Save the charts as HTML
     bubble_chart_html = bubble_chart.to_html(full_html=False, include_plotlyjs='cdn')
@@ -79,11 +90,11 @@ def chart():
 
     return render_template('index.html', species=unique_species,
                            bubble_chart_html=bubble_chart_html, pie_chart_html=pie_chart_html,
-                           data=data, selected_species=selected_species, chart_data_org=organism_plot, chart_data_pro=proteinname_plot)
+                           data=data, selected_species=selected_species, protein_count=df['PDB ID'].nunique(), chart_data_org=organism_plot, chart_data_pro=proteinname_plot)
 
 @app.route('/select')
 def load():
-    files = [f for f in os.listdir('./MSA_FLASK/fasta_files/MSA_align_files') if f.endswith('.fasta')]
+    files = sorted(f for f in os.listdir(dataset.msa_dir()) if f.endswith('.fasta'))
     return render_template('load.html', files=files)
 
 @app.route('/msa', methods=['GET', 'POST'])
@@ -93,7 +104,7 @@ def visualize():
         return "No file selected.", 400
     
     # only accept files listed in the alignment folder (prevents reading other files via '../')
-    msa_dir = './MSA_FLASK/fasta_files/MSA_align_files'
+    msa_dir = dataset.msa_dir()
     if selected_file not in os.listdir(msa_dir) or not selected_file.endswith('.fasta'):
         return "Selected file not found.", 404
     fasta_path = os.path.join(msa_dir, selected_file)
@@ -102,7 +113,7 @@ def visualize():
     if not sequences:
         return "No sequences found in the file.", 404
     
-    sequence_details = get_sequence_details_from_json("./Database/ProteinDatabase.json")
+    sequence_details = get_sequence_details_from_json(dataset.database_path())
     if not sequence_details:
         return "Error loading sequence details.", 500
     

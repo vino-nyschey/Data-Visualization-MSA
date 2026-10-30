@@ -109,28 +109,28 @@ def cluster_organism(data):
 
     return data
 
-# Replace 'output_data.json' with the actual path to JSON file
-input_json_path = 'fetched_data.json'
-output_json_path = 'ProteinDatabase.json'
+def enrich_protein_data(data):
+    # Add protein family, chain count, discovered year and clustered organism to fetched data
+    data = add_protein_family_info(data)
+    data = add_chain_count(data)
+    data = convert_founded_date_to_year(data)
+    return cluster_organism(data)
 
-# Load existing data from JSON file
-with open(input_json_path, 'r') as json_file:
-    existing_data = json.load(json_file)
 
-# Add protein family information to each entry
-data_with_family = add_protein_family_info(existing_data)
+if __name__ == "__main__":
+    # Replace 'output_data.json' with the actual path to JSON file
+    input_json_path = 'fetched_data.json'
+    output_json_path = 'ProteinDatabase.json'
 
-# Add chain count information to each entry
-data_with_chain_count = add_chain_count(data_with_family)
+    # Load existing data from JSON file
+    with open(input_json_path, 'r') as json_file:
+        existing_data = json.load(json_file)
 
-# Convert Founded Date to Discovered Year and remove Founded Date
-data_with_discovered_year = convert_founded_date_to_year(data_with_chain_count)
+    # Add Protein Family, Chain Count, Discovered Year and Clustered Organism information
+    data_with_clustered_organism = enrich_protein_data(existing_data)
 
-# Cluster Organism based on species names
-data_with_clustered_organism = cluster_organism(data_with_discovered_year)
+    # Save the updated data to a new JSON file
+    with open(output_json_path, 'w') as json_file:
+        json.dump(data_with_clustered_organism, json_file, indent=2)
 
-# Save the updated data to a new JSON file
-with open(output_json_path, 'w') as json_file:
-    json.dump(data_with_clustered_organism, json_file, indent=2)
-
-print(f"Data with Protein Family, Chain Count, Discovered Year, and Clustered Organism information exported to {output_json_path}")
+    print(f"Data with Protein Family, Chain Count, Discovered Year, and Clustered Organism information exported to {output_json_path}")

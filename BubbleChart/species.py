@@ -2,11 +2,12 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
+from dataset import one_chain_per_protein
+
 def plot_bubble_chart(data, selected_species):
     # Convert 'Discovered Year' to integer
     data['Discovered Year'] = pd.to_numeric(data['Discovered Year'], errors='coerce')
-    data = data[data['Sequence ID'].str.split(':').str[1] != 'P']  # delete sequence with chain P
-    data = data[data['Sequence ID'].str.split(':').str[1] != 'Q']  # delete sequence with chain Q
+    data = data[data['Protein Family'] != 'PEPTIDE']  # delete short peptide chains bound to the proteins
 
     # Filter data based on selected species
     data = data[data['Species Name'].isin(selected_species)]
@@ -53,9 +54,7 @@ def plot_pie_chart(data, selected_species):
     # Filter data based on selected species
     if selected_species:
         data = data[data['Species Name'].isin(selected_species)]
-        data = data[data['Sequence ID'].str.split(':').str[1] == 'A']
-    else: 
-         data = data[data['Sequence ID'].str.split(':').str[1] == 'A']
+    data = one_chain_per_protein(data) # to get each protein once independent on how many chains it has
 
     # color map
     unique_proteins = data['Protein Family'].unique()

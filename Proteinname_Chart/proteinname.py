@@ -1,23 +1,15 @@
-import pandas as pd
 from collections import Counter
-from pathlib import Path
 import plotly.graph_objects as go
 import plotly.io as pio
-import os
-import json
+
+from dataset import one_chain_per_protein
 
 # function to categorize the proteins according to general enzyme groupings
-def categorization(selected_species): 
-    with open(os.path.abspath("./Database/ProteinDatabase.json"), "r") as file: 
-        data = json.load(file)
-    data = pd.json_normalize(data)
-
+def categorization(data, selected_species): 
     # filter data based on selected species
     if selected_species:
         data = data[data['Species Name'].isin(selected_species)]
-        data = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
-    else: 
-         data = data[data['Sequence ID'].str.split(':').str[1] == 'A'] # to get each protein once independent on how many chains it has
+    data = one_chain_per_protein(data) # to get each protein once independent on how many chains it has
 
     proteinnames = data['Protein Name']
     organisms = data['Species Name']
@@ -93,8 +85,8 @@ def labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count
     return count_chart, count_chart_human, count_chart_coli, hovertext, hovertext_coli, hovertext_human, axis_label
 
 # function to create bar chart (x-axis: number of proteins, y-axis: protein family names)
-def create_bar_chart(selected_species):
-    general_name, count_others, organisms = categorization(selected_species)
+def create_bar_chart(data, selected_species):
+    general_name, count_others, organisms = categorization(data, selected_species)
     human_proteins, coli_proteins, rest_proteins = divideByOrganism(general_name, organisms)
     count_chart, count_chart_human, count_chart_coli, hovertext, hovertext_coli, hovertext_human, axis_label = labelChart(general_name, human_proteins, coli_proteins, rest_proteins, count_others)
 
@@ -152,7 +144,7 @@ def create_bar_chart(selected_species):
                             args=[{"visible": [False, False, True]}]),
                     ]),
              )
-         ], xaxis_range=[0,25], barmode='stack'
+         ], barmode='stack'
     )
 
     chart_data = pio.to_json(fig)

@@ -11,9 +11,7 @@ This project aims to facilitate the anaylsis of multiple protein sequences using
 3. Run python3 website.py or python website.py (depending on version).
 
 ```
-pip install flask
-pip install plotly
-pip install pandas
+pip install -r requirements.txt
    
 git clone git@github.com:gvarul/Data-Visualization-MSA.git
   
@@ -26,6 +24,19 @@ Copy the code into chosen browser. We recommend Safari and Firefox, which are wo
 
 ### Data Source 
 The project is based on a dataset, in form of a fasta file (`protein_sequence_analysis_lpt.fasta`), which is available in `DataSource`. The file consists of 89 Protein Sequences and their respective protein IDs. 
+
+### Using your own FASTA file
+Any FASTA file whose headers are PDB chain IDs can be analysed, e.g. `>1AH7:A`, `>1AH7:A|PDBID|CHAIN|SEQUENCE`, `>1AH7_A` or the current RCSB download format `>4HHB_1|Chains A, C|...` (one entry per listed chain).
+Either upload it on the first page of the website ("Use your own sequences"), or build the dataset on the command line:
+
+```
+python -m Pipeline.build_dataset path/to/sequences.fasta
+python website.py
+```
+
+The pipeline (`Pipeline/`) reads protein name, organism, engineered flag and deposition year from the local PDB files in `Fetch-AA-info/PDB-Database` or, for all other IDs, from the RCSB PDB API (cached in `datasets/rcsb_cache.json`). It then assigns protein families and species groups (`Database/DatabaseGenerator.py`) and aligns each family with a built-in center-star aligner (Biopython, BLOSUM62).
+The result is stored in `datasets/active/` and shown by the website instead of the sample data; "Back to sample dataset" on the first page removes it.
+Options: `--offline` (no RCSB requests), `--msa-dir DIR` (use your own pre-aligned files, e.g. from MUSCLE, named `<FAMILY>_align.fasta`), `--out DIR`.
 
 ### Navigating the website 
 #### First Page 

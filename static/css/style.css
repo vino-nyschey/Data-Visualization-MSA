@@ -123,3 +123,25 @@ h3 {
 span.amino-acid {
     font-family: monospace;
 }
+/* Upload of an own FASTA file */
+.upload-card {
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.upload-card form {
+    display: inline-block;
+    margin: 5px 10px 5px 0;
+}
+
+.upload-error {
+    color: #b00020;
+    font-weight: bold;
+}
+
+.upload-status {
+    color: #555;
+}

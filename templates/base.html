@@ -19,7 +19,7 @@
     <div class="non-chart-text">
         <p> 
             By visualising the relationships between proteins, the analysis of these proteins is faster, more effective and enables researchers to communicate their findings.
-            We visualised 89 proteins using a pre-provided FASTA-file containing the full sequences as well as the protein IDs. With help of ProteinDataBank (PDB), further
+            We visualised {{ protein_count }} proteins using {% if uploaded_dataset %}an uploaded{% else %}a pre-provided{% endif %} FASTA-file containing the full sequences as well as the protein IDs. With help of ProteinDataBank (PDB), further
             information about the given sequences were extracted. This information is shown in the table below. For more details about each entry, refer to the 'Details' button.
             The rows in the table can be sorted according to each column name by clicking on this name. Additionally to this overview, further charts 
             to visualise specific aspects of the proteins have been implemented (see Charts/Visualizations). A multiple sequence alignment of clusters of the proteins can also be found and used for analysis (see MSA).  
@@ -29,6 +29,28 @@
     <div class="container">
         <button class="container-button" onclick="window.location.href='/visualisations'">Charts/Visualisations</button>
         <button class="container-button" onclick="window.location.href='/select'">MSA</button>
+    </div>
+
+    <!-- Upload of an own FASTA file -->
+    <div class="upload-card">
+        <h3>Use your own sequences</h3>
+        <p>
+            Upload a FASTA file with PDB chain IDs as headers (e.g. <code>&gt;1AH7:A</code> or <code>&gt;1AH7:A|PDBID|CHAIN|SEQUENCE</code>).
+            Protein information is fetched from RCSB PDB and one MSA per protein family is calculated, which can take a minute.
+        </p>
+        {% if upload_error %}<p class="upload-error">{{ upload_error }}</p>{% endif %}
+        <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="this.querySelector('button').disabled = true; this.querySelector('button').textContent = 'Processing...';">
+            <input type="file" name="fasta_file" accept=".fasta,.fa,.faa,.txt">
+            <button class="container-button" type="submit">Upload and analyse</button>
+        </form>
+        <p class="upload-status">
+            Current data: {% if uploaded_dataset %}uploaded FASTA file{% else %}sample dataset{% endif %}
+        </p>
+        {% if uploaded_dataset %}
+        <form action="/reset_dataset" method="post">
+            <button class="container-button" type="submit">Back to sample dataset</button>
+        </form>
+        {% endif %}
     </div>
     <div class="container-grid">
         <div class="chart-card-base">
